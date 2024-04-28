@@ -1,0 +1,113 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vegan Cooking Blog</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-0m3uEEopG4MuXfV0JyXeCcfy8p6t1P26xfn8d1OPF9aOxw++viJ8zA/yzm0lPaBP8RD2H1bMpnfPZn8r3+m0BQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap.js' %}"></script>
+
+
+
+    <style>
+
+        .header {
+            background-color: rgb(248, 210, 95);
+            color: #000;
+            height: 150px;
+            width:100%;
+            z-index: 1;
+            position: absolute;
+        }
+
+
+        .btn-social a {
+            position: relative;
+            z-index: 10;
+        }
+    
+    </style>
+
+
+
+
+    <div class="header" style="font-size: xx-large;">
+        <center>The Vegan Meals Which Got Me Through University  </center>
+        <div class="line" style="border-top: 1px solid #000; opacity: 50%;  position: relative; top: 23px;"></div>
+
+            <div class="header_buttons"  style="display:inline-flex; position: relative; top: 18px; left:500px;">
+                <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Home</a></center>
+                <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Recipes</a></center>
+                <center><a href = "{% url 'contact' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Contact</a></center>
+                <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">About</a></center>
+                <form method="post" style="height: 0px; z-index: 2; position: relative; font-size: small; top: 10px;">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="text" style="height: 27px; width: 200px;" placeholder="Enter Text Here...">
+                    
+                    <button type="submit" style="background-color: rgb(248, 198, 50); border: 0px;">Search</button>
+                </form>
+            </div>
+
+
+        <div class="line" style="border-top: 1px solid #000; opacity: 50%; top: 20px; position: relative;"></div>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+
+
+
+<body>
+    
+    <h2 style="position: relative; font-size: xxx-large; left: -300px; top: 160px;">Posts</h2>
+
+    <div class="container" style="position: relative; top: 115px;">
+        {% for post in posts %}
+                <div class="container" style="position: relative;">
+                    <h3><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h3>
+                    <small>
+                        {{ post.created_on.date }} | Categories:
+                        {% for category in post.categories.all %}
+                            <a href="{% url 'blog_category' category.name %}">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
+                    </small>
+                    <p>{{ post.body | slice:":400" }}...</p>
+                </div>
+        {% endfor %}
+    </div>
+
+    
+</body>
+
+
+
+<footer>
+
+    
+
+</footer>
+
+
+</html>
