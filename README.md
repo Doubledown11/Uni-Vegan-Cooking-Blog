@@ -5,6 +5,8 @@ NOTE: This is unfinished.
 
 Utilized Django (Python), JavaScript, HTML, CSS and bootstrap. 
 
+Created a users app which allows for users registration, sign in, and sign out.
+
 JavaScript was used to:
     give the site title a typewriter effect, 
     give the site a dark mode,
