@@ -1,0 +1,229 @@
+
+html {
+  width: 100%;
+  background-color: aqua;
+  color: aqua;
+}
+
+body {
+  width: 100%;
+}
+
+.header {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  height: 150px;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  font-size: xx-large;
+}
+
+
+.btn-social a {
+  position: relative;
+  z-index: 10;
+}
+
+
+
+#Title_Text {
+  height: 70px; 
+  width: 100%; 
+  z-index: 5; 
+  position: relative; 
+  top: 15px;
+}
+
+.line1 {
+      border-top: 1px solid #000; 
+      opacity: 50%;  
+      position: relative; 
+      top: 23px;
+}
+
+.line2 {
+  border-top: 1px solid #000; 
+  opacity: 50%; 
+  top: 20px; 
+  position: relative;
+}
+
+.header_buttons {
+  display:inline-flex; 
+  position: relative; 
+  top: 18px; 
+  left:0px;
+}
+
+#header_button {
+  background-color: rgb(248, 210, 95); 
+  color:#000; 
+  margin-right: 10px; 
+  border: 0px;
+}
+
+
+#header_button_modal {
+  background-color: rgb(248, 210, 95); 
+  color:#000; 
+  margin-right: 10px; 
+  border: 0px;
+}
+
+#header_form {
+  height: 0px; 
+  z-index: 2; 
+  position: relative; 
+  font-size: small; 
+  top: 10px; 
+  left: 750px;
+}
+
+#header_input {
+  height: 27px; 
+  width: 200px;
+}
+
+#header_input::placeholder {
+
+}
+
+#header_submit_button {
+  background-color: rgb(248, 198, 50); 
+  border: 0px;
+  color: #000;
+}
+
+#Posts {
+  position: relative; 
+  font-size: xxx-large; 
+  left: -300px; 
+  top: 160px;
+}
+
+#posts_container {
+  position: relative; 
+  top: 115px; 
+  padding-bottom: 50px;
+}
+
+#post_container {
+  position: relative;
+}
+
+
+
+
+
+/* Below is for the styl change at 855px */
+
+@media only screen and (max-width: 855px) {
+  html {
+  width: 100%;
+  background-color: aqua;
+  color: aqua;
+  }   
+
+  body {
+      width: 100%;
+  }
+
+  .header {
+      background-color: rgb(248, 210, 95);
+      color: #000;
+      height: 150px;
+      width: 100%;
+      z-index: 1;
+      position: absolute;
+      font-size: xx-large;
+  }
+
+  .btn-social a {
+      position: relative;
+      z-index: 10;
+  }
+
+  
+  #Title_Text {
+      height: 70px; 
+      width: 100%; 
+      z-index: 5; 
+      position: relative; 
+      top: 15px;
+  }
+
+  .line1 {
+      border-top: 1px solid #000; 
+      opacity: 50%;  
+      position: relative; 
+      top: 23px;
+  }
+
+  .line2 {
+      border-top: 1px solid #000; 
+      opacity: 50%; 
+      top: 20px; 
+      position: relative;
+  }
+
+  .header_buttons {
+      display:inline-flex; 
+      position: relative; 
+      top: 18px; 
+      left:0px;
+  }
+
+  #header_button {
+      background-color: rgb(248, 210, 95); 
+      color:#000; 
+      margin-right: 10px; 
+      border: 0px;
+  }
+
+  #header_form {
+      height: 0px; 
+      z-index: 2; 
+      position: relative; 
+      font-size: small; 
+      top: 10px; 
+      left: 750px;
+  }   
+
+  #header_input {
+      height: 27px; 
+      width: 200px;
+  }
+
+  #header_input::placeholder {
+  
+  }
+
+  #header_submit_button {
+      background-color: rgb(248, 198, 50); 
+      border: 0px;
+      color: black;
+  }
+}
+
+
+
+#Posts {
+  position: relative; 
+  font-size: xxx-large; 
+  left: -300px; 
+  top: 160px;
+}
+
+#posts_container {
+  position: relative; 
+  top: 115px; 
+  padding-bottom: 50px;
+}
+
+#post_container {
+  position: relative;
+}
+
+
+

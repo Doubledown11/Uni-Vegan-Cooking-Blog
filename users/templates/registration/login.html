@@ -21,7 +21,6 @@
         <!-- JavaScript Source -->
         <script src="{% static '/js/Typewriter_Title.js' %}"></script>
         <script src="{% static '/js/Dark_Mode_Toggle.js' %}"></script>
-        <script src="{% static '/js/Sign_Out_Modal.js' %}"></script>
 
         
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -173,88 +172,10 @@
             color: silver;
         }
 
-
-        /* Styling for the Modal Sign Out Box */
-        #logout_modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 5; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        .dark_mode_slider {
+            background-color: saddlebrown;
         }
 
-        #logout_modal_open {
-            display: block;
-        }
-
-            /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-            height: 350px;
-            width: 500px;
-            border-radius: 10px 10px 10px 10px;
-        }
-
-            /* The Close Button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            height: 1%;
-            width: 1%;
-        }
-
-        .close:hover,.close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #header_button_modal {
-            background-color: rgb(248, 210, 95); 
-            color:#000; 
-            margin-right: 10px; 
-            border: 0px;
-            height: 70%;
-            top: 10px;
-            position: relative;
-        }
-
-        #modal_text {
-            font-size: x-large;
-        }
-
-        #confirm_signout {
-            height: 50px;
-            width: 200px;
-            border-radius: 10px 10px 10px 10px;
-            font-size: medium;
-            background-color: rgb(248, 210, 95);
-            color: #000;
-            border: 0px;
-        }
-
-        #confirm_signout:hover {
-            background-color: rgb(248, 210, 95);
-            color: #000;
-        
-        }
-
-        #confirm_signout:active {
-            border: 0px;
-            outline: none;
-            box-shadow: none; 
-        }
 
         </style>
 
@@ -280,33 +201,8 @@
                 <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" id="header_button" >Recipes</a></center>
                 <center><a href = "{% url 'contact' %}" class="btn btn-secondary" id="header_button">Contact</a></center>
                 <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" id="header_button">About</a></center>
-
-                {% if user.is_authenticated %}
-                    <button class="btn btn-secondary" id="header_button_modal">Sign-Out</button>
-                    <div id="logout_modal" class="modal">
-                        <div class="modal-content">
-                            <span id="close_modal" class="close">&times;</span>
-                            <center><p id="modal_text">Are you sure you want to sign out?</p></center>
-
-                            <center>
-                                <form method='post' id="signout_form" action="{% url 'users:logout_user' %}">
-                                    {% csrf_token %}
-                                    
-                                    <button class="btn-secondary" id="confirm_signout" >Sign-Out</button>
-                                </form>                             
-                            </center> 
-
-                        </div>
-                    </div>    
-
-                    <!-- <center><a href = "{% url 'users:logout' %}" class="btn btn-secondary" id="header_button">Sign-Out</a></center> -->
-                {% else %}
-                    <center><a href = "{% url 'users:login' %}" class="btn btn-secondary" id="header_button">Sign-In</a></center>
-                {% endif %}
-
                 <form method="post" id="header_form">
                     {% csrf_token %}
-                    {{ form }}
                     <input type="text" id="header_input" placeholder="Enter Text Here...">
                     
                     <button type="submit" id="header_submit_button">Search</button>
@@ -318,25 +214,42 @@
 
 
 
-        
-        <h2 id="Posts">Posts</h2>
+        <div class="container" style="top: 150px; position: relative;">
+            <!-- 
+                Find how to replication the message below when form below h2 fails to auth
+            {% if form.errors %}
+                <p>Your username and password did not match. Please try again!</p>
+            {% endif %}
+            {{ form }} -->
 
-        <div class="container" id="posts_container">
-            {% for post in posts %}
-                    <div class="container" id="post_container">
-                        <h3><a href="{% url 'blog_detail' post.pk %}" id="Post_Url" class="Post_Url">{{ post.title }}</a></h3>
-                        <small id="post_date_category">
-                            {{ post.created_on.date }} | Categories:
-                            {% for category in post.categories.all %}
-                                <a href="{% url 'blog_category' category.name %}" id="category_name">
-                                    {{ category.name }}
-                                </a>
-                            {% endfor %}
-                        </small>
-                        <p id="post_body" >{{ post.body | slice:":400" }}...</p>
-                    </div>
-            {% endfor %}
+            
+            <h2 id="sign_in_title_text">Log In</h2>
+            <form method="post" action="login_submit/" style="position: relative; top: 150px; height: 150px; width: 150px; z-index: 5; color: black; background-color: wheat;">
+            
+                <!-- {% if errors %}
+                    {{ errors }}
+                {% endif %} -->
+
+                <input type="text" id="Username_Input" name="username" for="Username" placeholder="Username">
+                <input type="text" id='Password_Input' name="password" for="Password" placeholder="Password">
+                {% csrf_token %}
+                <button type="submit" >Log In</button>
+            </form>
+
+            
+
+
         </div>
+
+
+        <div class="row" style="height: 200px;">
+
+        </div>
+
+        <div class="row" style="height: 200px;">
+
+        </div>
+
 
     </body>
 

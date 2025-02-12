@@ -4,6 +4,7 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=30)
 
+    # I THINK -- TRY TO FIND TUTORIAL USED -- Allows class to be referenced plurally.
     class Meta: 
         verbose_name_plural = "categories"
 
