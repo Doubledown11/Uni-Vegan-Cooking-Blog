@@ -5,7 +5,10 @@ NOTE: This is unfinished.
 
 Utilized Django (Python), JavaScript, HTML, CSS and bootstrap. 
 
-Created a users app which allows for users registration, sign in, and sign out.
+Created a users app which allows for users registration, sign insign in/out, profile picture upload... 
+
+The recipes are displayed on the home page in a blog format, whereby Django template tags are utilized to pull relevant data from the database which is then formatted for display in the viewport. The blog app also has a contact form, where users can make enquiries which are saved in the database via Django's Models.py. These are then displayed to a site admin via template tags in a format similar to how the blog posts are displayed.
+
 
 JavaScript was used to:
     give the site title a typewriter effect, 
