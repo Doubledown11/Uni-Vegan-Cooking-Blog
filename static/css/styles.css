@@ -63,6 +63,7 @@ body {
   border: 0px;
 }
 
+
 #header_button_modal {
   background-color: rgb(248, 210, 95); 
   color:#000; 
@@ -89,10 +90,9 @@ body {
 }
 
 #header_submit_button {
-  background-color: rgb(248, 210, 95);
+  background-color: rgb(248, 198, 50); 
+  border: 0px;
   color: #000;
-  border: #000 1px solid;
-  border-radius: 5px 5px 5px 5px;
 }
 
 #Posts {
@@ -110,6 +110,21 @@ body {
 
 #post_container {
   position: relative;
+}
+
+
+
+
+
+#register_container {
+  position: relative;
+  background-color: #000;
+  z-index: 3;
+}
+
+#register_button {
+  position: relative;
+  z-index: 3;
 }
 
 
@@ -204,10 +219,8 @@ body {
 
   #header_submit_button {
       background-color: rgb(248, 198, 50); 
+      border: 0px;
       color: black;
-      color: #000;
-      border: #000 1px solid;
-      border-radius: 5px 5px 5px 5px;
   }
 }
 

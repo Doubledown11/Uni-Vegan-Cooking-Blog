@@ -37,7 +37,7 @@
                 border-radius: 5px 5px 5px 5px;
             }
 
-            #contact_me_header {
+            #my_account_header {
                 position: relative;
                 top: 50px;
                 font-size: 40px;
@@ -45,13 +45,13 @@
                 right: 280px;
             }
         
-            #contact_container {
-                padding-bottom: 450px;
+            #my_account_container {
+                padding-bottom: 350px;
                 position: relative; 
                 top: 150px;                
             }
 
-            #email_div {
+            #account_information_container {
                 position: relative;
                 width: 100%;
                 background-color: rgb(248, 210, 95);
@@ -60,7 +60,7 @@
                 height: 140px;
             }
 
-            #email_header {
+            #account_information_header {
                 font-size: larger;
                 position: relative;
             }
@@ -175,11 +175,11 @@
                 <div class="header_buttons"  style="display:inline-flex; position: relative; top: 18px; left:500px;">
                     <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Home</a></center>
                     <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Recipes</a></center>
+                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Contact</a></center>
                     <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">About</a></center>
                     
                     {% if user.is_authenticated %}
-                    <button class="btn btn-secondary" id="header_button_modal" style="position: relative; top: 5px;">Sign-Out</button>
-                    <center><a href = "{% url 'users:account' %}" class="btn btn-secondary" id="header_button">Account</a></center>   
+                    <button class="btn btn-secondary" id="header_button_modal">Sign-Out</button>
                     <div id="logout_modal" class="modal">
                         <div class="modal-content">
                             <span id="close_modal" class="close">&times;</span>
@@ -216,49 +216,23 @@
 
 
 
-        <div class="container" id="contact_container">    
-            <h1 id="contact_me_header">Contact Me:</h1>
+        <div class="container" id="my_account_container">    
+            <h1 id="my_account_header">My Account:</h1>
             <!-- Specify an action as where to save the input entered into the form -->
 
             <!-- Find a emoji/pic of a mail letter such as at bottom of page on https://retail.plurachoice.com/en/home -->
-            <div class="container" id="email_div">
-                <h2 id="email_header">My Email:</h2>
-                <span id="email_text">If you have a question and would prefer to contact me directly my email is: dalice@ualbert.ca</span>
+            
+            <!-- Buttons with links which open with block content tags -->
+            
+            <div class="container" id="account_information_container">
+                <h2 id="account_information_header">Account Information:</h2>
+                
+                <h3><a href="{% url 'account_details' post.pk %}" id="Post_Url" class="Post_Url">{{ post.title }}</a></h3>
+
+            
             </div>
 
-            <div class="container" id="github_div">
-                <h2 id="github_header">My GitHub:</h2>
-                <!-- Include a picture of me // Picture of github logo
-                 Maybe find/use the buttons from resume app that are shaped like github and insta to 
-                 link to the respective sites.-->
-                <span id="github_text">https://www.github.com/Doubledown11/</span>
-            </div>
-
-            <div class="container" id="instagram_div">
-                <h2 id="instagram_header">My Instagram:</h2>
-                <span id="instagram_text">https://www.instagram.com/double_down11/</span>
-            </div>
-
-            <div class="container" id="other_div">
-                <h2 id="other_header">Other Inquiries:</h2>
-
-                <!-- Maybe make the input box resizeable by the user -->
-                <form action="/send_enquiry" id="enquiry_form" method="post">
-                    <input type="text" id="enquiry_input" placeholder="Enter Message Here">
-                    <select id="enquiry_select" name="enquiry_type">
-                        <option value="">Please Select</option>
-                        <option value="General" id="enquiry_options">General</option>
-                        <option value="work" id="enquiry_options">Work</option>
-                        <option value="Errors/Bugs" id="enquiry_options">Error/Bugs</option>
-                        <option value="Fun" id="enquiry_options">Fun</option>
-                    </select>
-                    <input type="text" id="enquiry_first_name" placeholder="First_Name">
-                    <input type="text" id="enquiry_last_name" placeholder="Last_Name_Equiry">
-                    <input type="text" id="enquiry_email" placeholder="email_enquiry">
-
-                    <button type="submit" id="enquiry_form_submit_button">Submit</button>
-                </form>
-            </div>
+            
 
             <!-- <form method="post">
                 {% csrf_token %}

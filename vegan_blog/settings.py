@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'vegan_blog.urls'
@@ -83,6 +84,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+
+# Cache
+# https://docs.djangoproject.com/en/5.1/topics/cache/
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "my_cache_table",
     }
 }
 
@@ -132,4 +144,24 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = "/"  
+LOGIN_REDIRECT_URL = "/" 
+LOGOUT_REDIRECT_URL = '/' 
+
+
+PASSWORD_RESET_TIMEOUT = 259200
+
+# Below is for my custom user model -- From Django Docs:
+'''https://docs.djangoproject.com/en/5.1/topics/auth/customizing/'''
+#AUTH_USER_MODEL = "users.Users"
+
+
+
+
+# # Email Information --> Need to send Users a reset account password email 
+
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_USER = 'dalice@ualberta.ca'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 

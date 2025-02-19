@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from .models import Post, Comment, Category
 from .forms import CommentForm, SearchForm
 
+from django.core.mail import EmailMessage
+
 # View to lead to Page for responsive design 
 def responsive(request):
     return render(request, 'blog/base_responsive.html')
@@ -53,8 +55,6 @@ def blog_index_reponsive(request):
 
 
 
-
-
 # Create your views here.
 def contact(request):
     return render(request, "blog/contact.html")
@@ -74,7 +74,6 @@ def search_view(request):
 
 def base(request):
     return render(request, "blog/base.html")
-
 
 
 
@@ -126,3 +125,20 @@ def blog_detail(request, pk):
         "form" : CommentForm(),
     }
     return render(request, "blog/detail.html", context)
+
+
+def send_enquiry(request):
+    """
+    Sends a contact enquiry to me when submitted by the user. 
+    """
+
+    if request.method == 'POST':
+        to_email = '' #My email: dalice@ualberta.ca 
+
+        message = '' #The information from contact form formatted
+
+
+        email = EmailMessage('User Contact Enquiry', message=message, to=to_email)
+
+
+

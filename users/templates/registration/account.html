@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        {% load static %}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Vegan Cooking Blog</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-0m3uEEopG4MuXfV0JyXeCcfy8p6t1P26xfn8d1OPF9aOxw++viJ8zA/yzm0lPaBP8RD2H1bMpnfPZn8r3+m0BQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'bootstrap.js' %}"></script>
+        
+        <script src="{% static '/js/Dark_Mode_Toggle.js' %}"></script>
+        <script src="{% static '/js/Sign_Out_Modal.js' %}"></script>
+        <script src="{% static '/js/change_account_info_modal.js' %}"></script>
+        <script src="{% static '/js/upload_profile_pic.js' %}"></script>
+        
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+
+        <style>
+
+            html {
+                background-color: white;
+                z-index: 2;
+            }
+
+            #submit_button_header {
+                background-color: rgb(248, 210, 95);
+                color: #000;
+                border: #000 1px solid;
+                border-radius: 5px 5px 5px 5px;
+            }
+
+            #my_account_header {
+                position: relative;
+                top: 50px;
+                font-size: 40px;
+                color: #000;
+                right: 280px;
+            }
+        
+            #my_account_container {
+                padding-bottom: 350px;
+                position: relative; 
+                top: 150px;                
+            }
+
+            #account_information_container {
+                position: relative;
+                width: 100%;
+                background-color: rgb(248, 210, 95);
+                z-index: 2;
+                top: 60px;
+                height: 500px;
+                border-radius: 10px 10px 10px 10px;
+            }
+
+            #account_information_header {
+                font-size: larger;
+                position: relative;
+                left: 250px;
+            }
+
+            
+
+            #change_information_header {
+                position: relative;
+                left: 50px;
+                font-size: medium;
+                top: 40px;
+            }
+            
+
+
+            #account_info_change_button {
+                background-color: navy; 
+                color:  white; 
+                position: relative;
+                width: 25%;
+                font-size: small;
+                height: 50px;
+                top: 0px;
+                left: 500px;
+            }
+
+
+                /* Styling for the Modal Sign Out Box */
+            #account_info_change_modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 5; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+
+            #change_account_modal_open {
+                display: block;
+            }
+
+                /* Modal Content/Box */
+            #account_modal_content {
+                background-color: #fefefe;
+                margin: 15% auto; /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%; /* Could be more or less, depending on screen size */
+                height: 570px;
+                border-radius: 10px 10px 10px 10px;
+                position: relative;
+                top: -200px;
+            }
+
+                /* The Close Button */
+            #close_modal {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                height: 1%;
+                width: 1%;
+            }
+
+            #close_modal:hover,#close_modal:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            #modal_text_cancel {
+                font-size: x-large;
+            }
+
+            #confirm_change_button {
+                height: 50px;
+                width: 200px;
+                border-radius: 10px 10px 10px 10px;
+                font-size: medium;
+                background-color: rgb(248, 210, 95);
+                color: #000;
+                border: 0px;
+                position: relative;
+                top: 90px;
+                right: 120px;
+            }
+
+            #confirm_change:hover {
+                background-color: rgb(248, 210, 95);
+                color: #000;
+            
+            }
+
+            #confirm_change:active {
+                border: 0px;
+                outline: none;
+                box-shadow: none; 
+            }
+
+
+            /* Account Information Change Modal Form Content Below */ 
+            #username_modal {
+                font-size: larger;
+                position: relative;
+                right: 220px;
+                top: 40px;
+            }
+            
+            #username_modal_input {
+                position: relative;
+                width: 250px;
+                height: 50px;
+                left: 100px;
+            }
+            
+            
+            #change_username_modal {
+                font-size: larger;
+                position: relative;
+                right: 202px;
+                top: 40px;
+            }
+            
+            #change_username_modal_input {
+                position: relative;
+                width: 250px;
+                height: 50px;
+                left: 100px;
+            }
+                
+            #change_email_modal {
+                font-size: larger;
+                position: relative;
+                right: 223px;
+                top: 40px;
+                
+
+            }
+
+            #change_email_modal_input {
+                position: relative;
+                width: 250px;
+                height: 50px;
+                left: 100px;
+            }
+            
+            
+            #change_first_name_modal {
+                font-size: larger;
+                position: relative;
+                right: 200px;
+                top: 40px;
+            }
+            
+            #change_first_name_modal_input {
+                position: relative;
+                width: 250px;
+                height: 50px;
+                left: 100px;
+            }
+            
+            #change_last_name_modal { 
+                font-size: larger;
+                position: relative;
+                right: 202px;
+                top: 50px;
+            }
+            
+            #change_last_name_modal_input {
+                position: relative;
+                width: 250px;
+                height: 50px;
+                left: 200px;
+            }  
+
+
+            #account_password_change {
+                position: relative;
+                font-size: large;
+                left: 50px;
+                top: 30px;
+            }
+
+            #account_password_change_form {
+
+            }
+
+            #account_password_change_button {
+                position: relative;
+                left: 500px;
+                bottom: 0px;
+            }
+
+
+            #account_first_name {
+                position: relative;
+                left: 50px;
+            }
+
+            #account_first_name_span {
+                position: relative;
+                left: 500px;
+                bottom: 40px;
+            }
+
+
+            #account_last_name {
+                position: relative;
+                left: 50px;
+            }
+
+
+            #account_last_name_span {
+                position: relative;
+                left: 500px;
+                bottom:40px;
+            }
+
+            #account_first_name {
+                position: relative;
+                left: 50px;
+            }
+
+            #account_first_name_span {
+                position: relative;
+                left: 500px;
+                bottom:40px;
+            }
+
+            #account_email {
+                position: relative;
+                left: 50px;
+            }
+
+            #account_email_span {
+                position: relative;
+                left: 500px;
+                bottom:40px;
+            }
+
+            #account_username {
+                position: relative;
+                left: 50px;
+            }
+
+            #account_username_span {
+                position: relative;
+                left: 500px;
+                bottom:40px;
+            }
+
+            #line1 {
+                border-top: 2px dotted black; 
+                opacity: 50%;  
+                position: relative; 
+                top: 0px;
+            }
+
+
+            #profile_picture_container {
+                position: relative;
+                width: 30%;
+                background-color: rgb(248, 210, 95);
+                z-index: 2;
+                bottom: 440px;
+                height: 500px;
+                border-radius: 10px 10px 10px 10px;
+                left: 550px;
+            }
+
+            #profile_picture_header {
+                font-size: medium;
+                position: relative;
+                left: 40px;
+                top: 20px;
+            }
+
+
+            #change_profile_pic_form {
+
+            }
+
+            #photo_upload_input {
+                position: relative;
+                top: 40px;
+                width: 50px;
+                height: 50px;
+                left: 20px;
+            }
+            
+            #profile_pic_div {
+                width: 150px;
+                height: 150px;
+                position: relative;
+                top: 30px;
+                border: #000 solid 1px;
+            }
+
+            #blank_profile_pic {
+                height: 148px;
+            }
+
+            #profile_pic_uploaded {
+
+            }
+
+            #photo_upload_button {
+                position: relative;
+                top: 45px;
+                left: 21px;
+                width: 60%;
+                height: 47px;
+                border-radius: 10px 10px 10px 10px;
+                color: white;
+                background-color: navy;
+            }
+
+            #photo_button_span {
+                position: relative;
+                font-size: x-small;
+                bottom: 8px;
+                bottom: 10px;
+            }
+
+            #line_little {
+                border-top: 2px dotted black; 
+                opacity: 50%;  
+                position: relative; 
+                top: 20px;
+                width: 100%;
+            }
+             
+            
+             
+        </style>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </head>
+
+
+
+    <body>
+        <div class="header" style="font-size: xx-large;">
+            <center>The Vegan Meals Which Got Me Through University</center>
+            <div class="line" style="border-top: 1px solid #000; opacity: 50%;  position: relative; top: 15px;"></div>
+
+                <div class="header_buttons"  style="display:inline-flex; position: relative; top: 18px; left:500px;">
+                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Home</a></center>
+                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Recipes</a></center>
+                    <center><a href = "{% url 'contact' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Contact</a></center>
+                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">About</a></center>
+                    
+                    {% if user.is_superuser %}
+                        <center><a href = "" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Blog Admin</a></center>
+                    {% endif %}
+                    
+                    <button class="btn btn-secondary" id="header_button_modal" style="position: relative; top: 5px;">Sign-Out</button>
+                    <div id="logout_modal" class="modal">
+                        <div class="modal-content">
+                            <span id="close_account_change_modal" class="close">&times;</span>
+                            <center><p id="modal_text">Are you sure you want to sign out?</p></center>
+                            <center>
+                                <form method='post' id="account_info_change_form" action="{% url 'users:logout_user' %}">
+                                    {% csrf_token %}
+                                    
+                                    <button class="btn-secondary" id="confirm_signout" >Sign-Out</button>
+                                </form>                             
+                            </center> 
+                        </div>
+                    </div>  
+
+                    
+                    <form method="post" style="height: 0px; z-index: 2; position: relative; font-size: small; top: 3px;">
+                        {% csrf_token %}
+                        {{ SearchForm }}
+                        <input type="text" style="height: 27px; width: 200px;" placeholder="Enter Text Here...">
+                        
+                        <button type="submit" id="submit_button_header">Search</button>
+                    </form>
+                </div>
+
+
+            <div class="line" style="border-top: 1px solid #000; opacity: 50%; top: 26px; position: relative;"></div>
+        </div>
+
+
+
+
+        <div class="container" id="my_account_container">    
+            <h1 id="my_account_header">My Account:</h1>
+            <!--
+                Have account information displayed to the page in tags.
+                If user wants to change something, have them click the change info button 
+                which opens a modal with a form on it which allows them to change their information
+            -->
+
+            {% if not user.is_superuser %}
+            
+            <!-- TODO NON ADMIN USERS ACCOUNT SECTION -- Change from below add change password -->
+            <div class="container" id="account_information_container">
+                <h2 id="account_information_header">Account Information:</h2>
+                   
+                
+                    <h3 id="account_first_name">First Name:</h3>
+                    {% if user.first_name %}
+                        <span id="account_first_name_span">{{ user.first_name }}</span>
+                    {% else %}
+                        <span id="account_first_name_span">No First Name Information Given Yet</span>
+                    {% endif %}
+                    
+                    <h3 id="account_last_name">Last Name:</h3>
+                    {% if user.last_name %}
+                        <span id="account_last_name_span">{{ user.last_name }}</span>
+                    {% else %}
+                        <span id="account_last_name_span">No Last Name Information Given Yet</span>
+                    {% endif %}
+
+                    <h3 id="account_email">Email:</h3>
+                    <span id="account_email_span">{{ user.email }}</span>
+
+
+                    <h3 id="account_username">Username:</h3>
+                    <span id="account_username_span">{{ user }}</span>
+
+
+                    <div class="line1" id="line1"></div>
+
+
+                    <!-- Have password obscured by wildcards * 
+                        Ask for current password prior to being able to change  
+                    -->
+                    <h3 id="account_password_change">Click to change your password</h3>
+                    <form method="link" action="change_password_page/" id='account_password_change_form'>
+                        <button class="btn btn-secondary" id="account_password_change_button" >Change Password</button>
+                    </form>
+
+
+                    <!-- Address info? -->
+
+                <h2 id="change_information_header">Something wrong? Click to change account information</h2>
+
+                <button class="btn btn-secondary" id="account_info_change_button">Change Account Information</button>
+
+
+                <div id="account_info_change_modal" class="modal">
+                    <div class="account_modal-content" id="account_modal_content">
+                        <span id="close_account_change_modal" class="close">&times;</span>
+                        <center><p id="modal_text_cancel">Are you sure you want to cancel?</p></center>
+
+                        <center>
+                            <form method='post' id="account_info_change_form" action="{% url 'users:account_info_change' %}">
+                                {% csrf_token %}
+                                
+                                <h4 id="change_username_modal">Change Username:</h4>
+                                <input type="text" id="change_username_modal_input" placeholder="Enter New Username">
+
+                                <!-- Will need to send confirmation email to both new and old emails -->
+                                <h4 id="change_email_modal">Change Email:</h4>
+                                <input type="text" id="change_email_modal_input" placeholder="Enter New Email">
+
+                                <h4 id="change_first_name_modal">Change First Name:</h4>
+                                <input type="text" id="change_first_name_modal_input" placeholder="Enter First Name">
+
+                                <h4 id="change_last_name_modal">Change Last Name:</h4>
+                                <input type="text" id="change_last_name_modal_input" placeholder="Enter Last Name">
+
+
+                                <button class="btn-secondary" id="confirm_change_button">Confirm Changes</button>
+                            </form>                             
+                        </center> 
+
+                    </div>
+                </div> 
+            </div>
+            {% else %}
+
+
+            <div class="container" id="account_information_container">
+                <h2 id="account_information_header">Account Information:</h2>
+                   
+                
+                    <h3 id="account_first_name">First Name:</h3>
+                    {% if user.first_name %}
+                        <span id="account_first_name_span">{{ user.first_name }}</span>
+                    {% else %}
+                        <span id="account_first_name_span">No First Name Information Given Yet</span>
+                    {% endif %}
+                    
+                    <h3 id="account_last_name">Last Name:</h3>
+                    {% if user.last_name %}
+                        <span id="account_last_name_span">{{ user.last_name }}</span>
+                    {% else %}
+                        <span id="account_last_name_span">No Last Name Information Given Yet</span>
+                    {% endif %}
+
+                    <h3 id="account_email">Email:</h3>
+                    <span id="account_email_span">{{ user.email }}</span>
+
+
+                    <h3 id="account_username">Username:</h3>
+                    <span id="account_username_span">{{ user.username }}</span>
+
+                    <div class="line1" id="line1"></div>
+                    
+                    <!-- Have password obscured by wildcards * 
+                        Ask for current password prior to being able to change  
+                    -->
+                    <h3 id="account_password_change">Click to change your password</h3>
+                    <form method="link" action="change_password_page/" id='account_password_change_form'>
+                        <button class="btn btn-secondary" id="account_password_change_button" >Change Password</button>
+                    </form>
+
+
+                    <!--
+                    
+                    Address info? 
+                    
+                     -->
+
+
+
+                <h2 id="change_information_header">Something wrong? Click to change account information</h2>
+
+                <button class="btn btn-secondary" id="account_info_change_button">Change Account Information</button>
+
+
+                <div id="account_info_change_modal" class="modal">
+                    <div class="account_modal-content" id="account_modal_content">
+                        <span id="close_modal" class="close">&times;</span>
+                        <center><p id="modal_text_cancel">Are you sure you want to cancel?</p></center>
+
+                        <center>
+                            <form method='post' id="account_info_change_form" action="account_info_change/">
+                                {% csrf_token %}
+                                
+                                <h4 id="username_modal">Old Username:</h4>
+                                <input type="text" id="username_modal_input" placeholder="REQUIRED" name="old_username">
+
+                                <h4 id="change_username_modal">Change Username:</h4>
+                                <input type="text" id="change_username_modal_input" placeholder="Enter New Username" name="username">
+
+                                <!-- Will need to send confirmation email to both new and old emails -->
+                                <h4 id="change_email_modal">Change Email:</h4>
+                                <input type="text" id="change_email_modal_input" placeholder="Enter New Email" name="email">
+
+                                <h4 id="change_first_name_modal">Change First Name:</h4>
+                                <input type="text" id="change_first_name_modal_input" placeholder="Enter First Name" name="first_name">
+
+                                <h4 id="change_last_name_modal">Change Last Name:</h4>
+                                <input type="text" id="change_last_name_modal_input" placeholder="Enter Last Name" name="last_name">
+
+                                <button class="btn-secondary" id="confirm_change_button" >Confirm Changes</button>
+                            </form>                             
+                        </center> 
+                    </div>
+                </div> 
+            </div>
+
+            {% endif %}
+
+            <div class="container" id="profile_picture_container">
+                <h2 id="profile_picture_header">Profile Picture?</h2>
+                
+                <div class="line_little" id="line_little"></div>
+
+                <!-- 
+                Need to check if a picture has been uploaded i think with tags 
+                    { if photo uploaded %}
+
+                if no photo uploaded display the generic profile picture saved in static/img/
+                -->
+                
+                <form id="change_profile_pic_form" method="post" action="change_profile_pic/">
+                    {{ form.as_p }}
+                    
+                    
+                    
+                                       
+                    <div class="container" id="profile_pic_div">
+                        <img src='{{ photo }}' id='profile_pic_uploaded'>
+                    </div>
+
+
+                    
+                    
+                    <input type="image" name="photo_upload" id="photo_upload_input">
+                    
+                    
+                    <button type="submit" id="photo_upload_button">
+                        <span id="photo_button_span">Upload Picture Above</span>
+                    </button>
+                </form>
+                
+
+                <!-- If the user is a superuser we need to be able to see all the contact inquiries made -->
+                {% if user.is_superuser %}
+                <div class="container" id="contact_enquiry_container">
+
+                </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+        <div class="container" style="height: 50px;"></div>
+        <div class="container" style="height: 50px;"></div>
+
+
+
+        
+    </body>
+
+
+
+    <footer style="height: 100px;">
+
+        
+
+    </footer>
+
+
+</html>

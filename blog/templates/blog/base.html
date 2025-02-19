@@ -283,6 +283,8 @@
 
                 {% if user.is_authenticated %}
                     <button class="btn btn-secondary" id="header_button_modal">Sign-Out</button>
+                    <center><a href = "{% url 'users:account' %}" class="btn btn-secondary" id="header_button">Account</a></center>
+
                     <div id="logout_modal" class="modal">
                         <div class="modal-content">
                             <span id="close_modal" class="close">&times;</span>
@@ -292,14 +294,13 @@
                                 <form method='post' id="signout_form" action="{% url 'users:logout_user' %}">
                                     {% csrf_token %}
                                     
-                                    <button class="btn-secondary" id="confirm_signout" >Sign-Out</button>
+                                    <button class="btn-secondary" id="confirm_signout">Sign-Out</button>
                                 </form>                             
                             </center> 
 
                         </div>
-                    </div>    
+                    </div>   
 
-                    <!-- <center><a href = "{% url 'users:logout' %}" class="btn btn-secondary" id="header_button">Sign-Out</a></center> -->
                 {% else %}
                     <center><a href = "{% url 'users:login' %}" class="btn btn-secondary" id="header_button">Sign-In</a></center>
                 {% endif %}
