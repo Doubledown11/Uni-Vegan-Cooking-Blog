@@ -21,9 +21,3 @@ class CommentForm(forms.Form):
 class SearchForm(forms.Form):
     query = forms.CharField(max_length=100)
 
-
-
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Your Name"})),
-    email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Your Email"})),
-    message = forms.CharField(max_length=500, widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter Your Message Here"}))

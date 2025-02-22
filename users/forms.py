@@ -4,7 +4,7 @@ from django.forms import ModelForm, DateInput
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from django.contrib.auth.models import User 
-from .models import ProfilePicture
+from .models import ProfilePicture, Enquiry
 
 
 
@@ -17,6 +17,8 @@ from .models import ProfilePicture
 #     class Meta:   
 #         Model = User
 #         Fields = ['username', 'email', 'password1', 'password2']
+
+
 
 
 class RegisterForm(UserCreationForm):
@@ -72,7 +74,7 @@ class UploadPhotoForm(forms.ModelForm):
 
     class Meta:
         model = ProfilePicture 
-        fields = ['profile_picture', 'user']
+        fields = ['profile_picture']
 
 
 
@@ -96,3 +98,15 @@ class UpdateUserForm(forms.ModelForm):
 
 
 
+
+
+class ContactForm(forms.ModelForm):
+    fname = forms.CharField(max_length=50) #widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Your First Name"})),
+    lname = forms.CharField(max_length=50) # widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Your Last Name"})),
+    email = forms.CharField(max_length=50) # widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Your Email"})),
+    message = forms.CharField(max_length=500) # widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter Your Message Here"}))
+    select = forms.CharField(max_length=25) #required=True)
+
+    class Meta:
+        model = Enquiry
+        fields = ['fname', 'lname', 'email', 'message', 'select']

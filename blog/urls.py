@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import re_path as url
 
-
+app_name = 'blog'
 
 urlpatterns = [
     # path('sign_in/', views.sign_in, name='sign_in'),

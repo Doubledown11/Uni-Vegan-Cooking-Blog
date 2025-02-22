@@ -127,6 +127,8 @@ def blog_detail(request, pk):
     return render(request, "blog/detail.html", context)
 
 
+
+
 def send_enquiry(request):
     """
     Sends a contact enquiry to me when submitted by the user. 

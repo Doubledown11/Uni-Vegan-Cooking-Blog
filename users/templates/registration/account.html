@@ -23,6 +23,7 @@
         
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
         <style>
@@ -351,20 +352,26 @@
 
             }
 
+           
             #photo_upload_input {
                 position: relative;
-                top: 40px;
-                width: 50px;
-                height: 50px;
+                top: 80px;
+                width: 150px;
+                height: 45px;
                 left: 20px;
+                z-index: 4;
             }
             
             #profile_pic_div {
                 width: 150px;
                 height: 150px;
+                border-radius: 50%;
+                overflow:hidden;
+                display:flex;
+                align-items: center;
+                justify-content: center;
                 position: relative;
                 top: 30px;
-                border: #000 solid 1px;
             }
 
             #blank_profile_pic {
@@ -372,7 +379,9 @@
             }
 
             #profile_pic_uploaded {
-
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             #photo_upload_button {
@@ -402,7 +411,101 @@
             }
              
             
-             
+            #contact_enquiry_container {
+                position: relative;
+                background-color: rgb(248, 210, 95);
+                height: auto;
+                width: 700px;
+                bottom: 700px;
+                z-index: 4;
+                border-radius: 10px 10px 10px 10px;
+            } 
+
+            #enquiry_title {
+                font-size: large;
+                color: #000;
+                text-decoration: underline;
+            }
+
+            #enquiry_container_2 {
+                background-color: #aaa;
+            }
+
+            #enquiry_container_3 {
+                background-color: aliceblue;
+            }
+
+            #enquiry_url {
+                font-size: medium;
+                color: #000;
+            }
+
+            #enquiry_url2 {
+                font-size: medium;
+                color: #000;
+                position: relative;
+                bottom: 41px;
+                left: 400px;
+            }
+            
+            #enquiry_email {
+                position: relative;
+                font-size: medium;
+                color: #000;
+                top: 20px;
+                right: 143px;
+            }
+                
+            #enquiry_select { 
+                position: relative;
+            
+            }
+                    
+            #enquiry_text {
+                padding-bottom: 100px;
+                position: relative;
+                top: 50px;
+            }
+
+            #line3 {
+                border-top: 2px solid black; 
+                opacity: 50%;  
+                position: relative; 
+                top: 0px;
+            }
+
+            #submitted_by {
+                position: relative;
+                bottom: 40px;
+                font-size: medium;
+                color: #000;
+                text-decoration: underline;
+            }
+
+            #submitted_by2 {
+                position: relative;
+                bottom: 10px;
+                font-size: medium;
+                color: #000;
+                left: 80px;
+            }
+
+            #submitted_by3 {
+                position: relative;
+                bottom: 10px;
+                font-size: medium;
+                color: #000;
+                left: 10px;
+            }
+
+            #email_space {
+               position: relative;
+               font-size: medium; 
+               color: #000;
+               top: 20px;
+               right: 239px;
+            }
+
         </style>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -418,14 +521,10 @@
             <div class="line" style="border-top: 1px solid #000; opacity: 50%;  position: relative; top: 15px;"></div>
 
                 <div class="header_buttons"  style="display:inline-flex; position: relative; top: 18px; left:500px;">
-                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Home</a></center>
-                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Recipes</a></center>
-                    <center><a href = "{% url 'contact' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Contact</a></center>
-                    <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">About</a></center>
-                    
-                    {% if user.is_superuser %}
-                        <center><a href = "" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Blog Admin</a></center>
-                    {% endif %}
+                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Home</a></center>
+                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Recipes</a></center>
+                    <center><a href = "{% url 'blog:contact' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Contact</a></center>
+                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">About</a></center>
                     
                     <button class="btn btn-secondary" id="header_button_modal" style="position: relative; top: 5px;">Sign-Out</button>
                     <div id="logout_modal" class="modal">
@@ -541,7 +640,6 @@
                                 <button class="btn-secondary" id="confirm_change_button">Confirm Changes</button>
                             </form>                             
                         </center> 
-
                     </div>
                 </div> 
             </div>
@@ -630,68 +728,106 @@
             </div>
 
             {% endif %}
-
+        
             <div class="container" id="profile_picture_container">
                 <h2 id="profile_picture_header">Profile Picture?</h2>
                 
                 <div class="line_little" id="line_little"></div>
-
+    
                 <!-- 
                 Need to check if a picture has been uploaded i think with tags 
                     { if photo uploaded %}
-
+    
                 if no photo uploaded display the generic profile picture saved in static/img/
                 -->
                 
-                <form id="change_profile_pic_form" method="post" action="change_profile_pic/">
+    
+                <form id="change_profile_pic_form" method="post" action="account/account/change_profile_pic/">
+                    {% csrf_token %}
                     {{ form.as_p }}
+                    <!-- USE DJANGO TAGS WITH IF PROFILE.PROFILE_PIC TO CHECK IF THE CURRENT USER HAS A PROFILE PIC
+                    AND IF THEY DO SHOW IT, ELSE SHOW THE BLANK PIC -->
                     
+                    {% if form.profile_picture %}    
+                        <div class="container" id="profile_pic_div">
+                            <img src="{{ form.profile_picture.url }}" id="profile_pic_uploaded" alt="Profile Picture">
+                        </div>
+    
+                    {% else %} 
+    
+                        <div class="container" id="profile_pic_div">
+                            <img src="/media/media/profile_pics/blank_profile_pic.jpg " id="profile_pic_uploaded" alt="Profile Picture">
+                        </div> 
+                    {% endif %}
+    
                     
-                    
-                                       
-                    <div class="container" id="profile_pic_div">
-                        <img src='{{ photo }}' id='profile_pic_uploaded'>
+                    <!-- input cleanse file types later -->
+                    <div class="mb-3">
+                        <input class="form-control form-control-sm" accept="image/*" id="photo_upload_input" type="file" name="photo_upload" 
+                            style="
+                                position: relative;
+                                top: 40px;
+                                left: -10px;
+                                height: 85%;
+                                width: 100%;
+                                padding-bottom: 0%;
+                                ">
                     </div>
-
-
-                    
-                    
-                    <input type="image" name="photo_upload" id="photo_upload_input">
-                    
-                    
+    
+                    <!-- REMOVE CSS FOR BELOW!!!!!!!!!!!!!!!!!!!!!
                     <button type="submit" id="photo_upload_button">
                         <span id="photo_button_span">Upload Picture Above</span>
-                    </button>
+                    </button> -->
                 </form>
                 
 
-                <!-- If the user is a superuser we need to be able to see all the contact inquiries made -->
-                {% if user.is_superuser %}
-                <div class="container" id="contact_enquiry_container">
+    
+            </div>
+            <div class="container" style="height: 50px;"></div>
+            <div class="container" style="height: 50px;"></div>
+        </div>        
+
+
+        <!-- Ensures only site admins can see enquiries made to the application-->
+        {% if user.is_superuser %}
+        <div class="container" id="contact_enquiry_container">
+            <h1 id="enquiry_title">Contact Messages Left through the sites Contact Form</h1>
+            
+            <div class="container" id="enquiry_container_2">
+                
+                {% for enquiry in enquiries %}
+                <div class="container" id="enquiry_container_3">
+                    <h3><a href="{% url 'users:enquiries' %}" id="enquiry_url" class="Enquiry_URL">Submitted On:</a></h3> 
+                    <h3><a href="{% url 'users:enquiries' %}" id="enquiry_url2" class="Enquiry_URL2">{{enquiry.created_on}}</a></h3> 
+                    
+                    <small id="submitted_by"> Submitted By:</small> 
+                    <small id="submitted_by3">First / Last Name:</small>
+                    <small id="submitted_by2">{{ enquiry.fname }}  {{ enquiry.lname }}</small>       
+                    
+                    <small id="email_space">Email Address:</small>
+                    <small id="enquiry_email">{{enquiry.email}}</small>
+                    <small id="enquiry_select">{{ enquiry.select }}</small>
+                    
+                    <p id="enquiry_text">{{ enquiry.message }}</p>
+                    <div class="line3" id="line3"></div>
 
                 </div>
-
-
-                {% endif %}
-
-
+                {% endfor %}
+                
             </div>
 
 
+
         </div>
-        <div class="container" style="height: 50px;"></div>
-        <div class="container" style="height: 50px;"></div>
+        {% endif %}
 
 
 
-        
     </body>
 
 
 
     <footer style="height: 100px;">
-
-        
 
     </footer>
 

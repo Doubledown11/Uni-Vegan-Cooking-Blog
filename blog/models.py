@@ -36,14 +36,3 @@ class Comment(models.Model):
         return f"{self.author} on '{self.post}'"
 
                     
-
-class Contact(models.Model):
-    enquiry_text = models.CharField(max_length=500)
-    enquiry_select = models.CharField(max_length=100)
-    enquire_fname = models.CharField(max_length=20)
-    enquire_lname = models.CharField(max_length=20)
-    enquire_email = models.CharField(max_length=30)
-
-    # def __str__(self):
-    #     return f'{self.enquire_email}' 
-

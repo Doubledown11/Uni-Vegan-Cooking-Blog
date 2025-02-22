@@ -276,10 +276,10 @@
 
 
             <div class="header_buttons">
-                <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" id="header_button">Home</a></center>
-                <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" id="header_button" >Recipes</a></center>
-                <center><a href = "{% url 'contact' %}" class="btn btn-secondary" id="header_button">Contact</a></center>
-                <center><a href = "{% url 'blog_index' %}" class="btn btn-secondary" id="header_button">About</a></center>
+                <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" id="header_button">Home</a></center>
+                <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" id="header_button" >Recipes</a></center>
+                <center><a href = "{% url 'blog:contact' %}" class="btn btn-secondary" id="header_button">Contact</a></center>
+                <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" id="header_button">About</a></center>
 
                 {% if user.is_authenticated %}
                     <button class="btn btn-secondary" id="header_button_modal">Sign-Out</button>
@@ -318,6 +318,7 @@
         </div>
 
 
+        
 
         
         <h2 id="Posts">Posts</h2>
@@ -325,11 +326,11 @@
         <div class="container" id="posts_container">
             {% for post in posts %}
                     <div class="container" id="post_container">
-                        <h3><a href="{% url 'blog_detail' post.pk %}" id="Post_Url" class="Post_Url">{{ post.title }}</a></h3>
+                        <h3><a href="{% url 'blog:blog_detail' post.pk %}" id="Post_Url" class="Post_Url">{{ post.title }}</a></h3>
                         <small id="post_date_category">
                             {{ post.created_on.date }} | Categories:
                             {% for category in post.categories.all %}
-                                <a href="{% url 'blog_category' category.name %}" id="category_name">
+                                <a href="{% url 'blog:blog_category' category.name %}" id="category_name">
                                     {{ category.name }}
                                 </a>
                             {% endfor %}

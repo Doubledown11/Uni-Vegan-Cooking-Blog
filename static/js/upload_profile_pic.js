@@ -1,35 +1,50 @@
-// JavaScript Code for the Sign-Out Modal  
-
+// JavaScript Code for the Profile Picture Upload  
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    console.log('JavaScript for modal has opened')
+    
+    console.log('JavaScript for photo form has opened')
 
-    // Get Modal 
-    modal_ = document.getElementById('account_info_change_modal');
-
-    // Get button
-    account_change = document.getElementById('account_info_change_button');
-
-    // When button is clicked, modal opens 
-    account_change.addEventListener('click', function () {
-        // modal.style.display='block';
-        modal_.classList.toggle('change_account_modal_open');
-        modal_.style.display = 'block';
+    // Detects submission of photo upload and display form
+    document.getElementById("change_profile_pic_form").addEventListener("submit", function() {
+        console.log("✅ Form submission detected!");
     });
+    
 
-    // Get the span which closes the modal 
-    close_modal = document.getElementById('close_account_change_modal');
+    // Check if current user has a profile pic and print that to the page
+    fetch('account/account/change_profile_pic/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'  // Add CSRF token if required
+        },
+        body: JSON.stringify({key:'value'}) // Send data if needed
+    })
 
-    // When span clicked, modal closes
-    close_modal.addEventListener('click', function () {
-        modal_.style.display='none';
-    });
 
-    // Users clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal_) {
-            modal_.style.display = 'none';
-        }; 
-    };
+        .then(response => response.json())  // Convert response to JSON
+        .then(ata => {
+            console.log(data.message);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        
+        // .then(data => {
+        //     console.log("✅ Profile Picture Data:", data);
+
+        //     if (data.length > 0) {
+        //         document.getElementById("profile_status").innerText = "Profile pictures found!";
+        //     } else {
+        //         document.getElementById("profile_status").innerText = "No profile pictures available.";
+        //     };
+        // })
+        // .catch(error => console.error("❌ Error fetching data:", error));
+    
+
+    // else print the blank_profile_pic.jpg img
+    
+
+    
+
 });

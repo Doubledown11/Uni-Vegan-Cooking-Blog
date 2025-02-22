@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from os.path import join
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -154,6 +155,11 @@ PASSWORD_RESET_TIMEOUT = 259200
 '''https://docs.djangoproject.com/en/5.1/topics/auth/customizing/'''
 #AUTH_USER_MODEL = "users.Users"
 
+
+# Media File Related Code: 
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 

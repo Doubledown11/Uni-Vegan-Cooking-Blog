@@ -4,8 +4,11 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm, LoginForm, UpdateUserForm, UploadPhotoForm
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
-from .models import User 
+from .models import User, ProfilePicture, Enquiry
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from .forms import ContactForm
 
 import random
 
@@ -112,7 +115,13 @@ def blog_index_reponsive(request):
 
 
 def account(request):
-    return render(request, 'registration/account.html')
+    enquiries = Enquiry.objects.all().order_by('-created_on')
+    print('Enquiries in enquiries_index', enquiries)
+    context = {
+        'enquiries':enquiries,
+    }
+    return render(request, 'registration/account.html', context)
+
 
 def change_password_page(request):
     return render(request, 'registration/change_password.html')
@@ -192,7 +201,7 @@ def account_info_change(request):
         # Below won't render my account page again, so I will just route the user to the home page for now
         # return render(request, '/registration/account.html', context)
 
-        return redirect('/')
+        return redirect('/users/account/')
 
 
 def logout_user(request):
@@ -254,25 +263,91 @@ def submit_login(request):
 
 
 
-
 def change_profile_pic(request):
     """
     Allows the user to upload/change their profile picture.
     """
 
+    print('media/profile_pics/blank_profile_pic.jpg')
     print('change_profile_pic view called')
     form = UploadPhotoForm()
     print(request.POST)
     print('\n\n\n')
+
+
     if request.method == 'POST':
         form = UploadPhotoForm(request.POST, request.FILES)
         if form.is_valid:
-            photo = form.save(commit=False)
-            # Set the uploading user to the users user before upload
-            photo.user = request.user
+            photo = form.cleaned_data['profile_picture']
 
-            photo.save()
-            return redirect('/')
+            # Ensure the user has a profile picture instance
+            profile, created = ProfilePicture.objects.get_or_create(user=request.user)
+            profile.profile_picture = photo
+            profile.save()
+
+            response_data = {'message':'Hello World!'}
+            return JsonResponse(response_data)
+        
+        else:
+            form = UploadPhotoForm()
+        
+    
+    print('form\n\n', form)
+    return render(request, 'registration/account.html', {'form':form})
+
+
+
+
+
+def make_enquiry(request): 
+    print('Make enquiry function called')
+    print('request post', request.POST)
+
+    if request.method == 'POST':
+        # Display blank registration form.
+        form = ContactForm(data=request.POST)
+        
+        print('form\n\n', form)
+        print('\n\n')
+        print('form data', form.data)
+        
+        print('\n\n')
+
+        if form.is_valid():
+            # Process completed form.
+            print('form is valid')
+            enquiry = form.save()
+            return redirect('blog:contact')
+            
+            
+        else:
+            print('Form is not valid')
+            # print('❌ Form Errors:', form.errors)  # ✅ Debugging
+
+            # print('Form errors', form.error_class)
+
+    else:
+        form = ContactForm()
+
+    # context = {'form':form}
+   # return render(request, '', context)
         
 
-    return render(request, 'registration/account.html', context={'form':form})
+
+def enquiries(request):
+    print('enquiries function called')
+    enquiry = Enquiry.objects.all()
+    form = ContactForm()
+
+    print('form', form)
+
+    # if request.method == 'POST':
+    #     form = ContactForm(request.POST)
+
+    #     if form.is_valid():
+    #         print('enquiries form is valid')
+
+    context = {'enquiry':enquiry}
+    print(context)
+    return render(request, 'users/account.html', context)
+
