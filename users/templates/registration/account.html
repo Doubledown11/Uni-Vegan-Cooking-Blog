@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html_account">
 
 
     <head>
@@ -16,7 +16,7 @@
         <script src="{% static 'bootstrap.js' %}"></script>
         
         <script src="{% static '/js/Dark_Mode_Toggle.js' %}"></script>
-        <script src="{% static '/js/Sign_Out_Modal.js' %}"></script>
+        <script src="{% static '/js/Sign_Out_Modal_Account.js' %}"></script>
         <script src="{% static '/js/change_account_info_modal.js' %}"></script>
         <script src="{% static '/js/upload_profile_pic.js' %}"></script>
         
@@ -28,76 +28,28 @@
 
         <style>
 
-            html {
-                background-color: white;
-                z-index: 2;
-            }
+            
 
-            #submit_button_header {
-                background-color: rgb(248, 210, 95);
-                color: #000;
-                border: #000 1px solid;
-                border-radius: 5px 5px 5px 5px;
-            }
-
-            #my_account_header {
-                position: relative;
-                top: 50px;
-                font-size: 40px;
-                color: #000;
-                right: 280px;
-            }
-        
-            #my_account_container {
-                padding-bottom: 350px;
-                position: relative; 
-                top: 150px;                
-            }
-
-            #account_information_container {
-                position: relative;
-                width: 100%;
-                background-color: rgb(248, 210, 95);
-                z-index: 2;
-                top: 60px;
-                height: 500px;
+            /* Account Information Change Modal Form Content Below */ 
+            #account_modal_content {
+                background-color: #fefefe;
+                margin: 15% auto; /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%; /* Could be more or less, depending on screen size */
+                height: 585px;
                 border-radius: 10px 10px 10px 10px;
-            }
-
-            #account_information_header {
-                font-size: larger;
                 position: relative;
-                left: 250px;
+                top: -200px;
+                z-index: 0;
             }
 
             
-
-            #change_information_header {
-                position: relative;
-                left: 50px;
-                font-size: medium;
-                top: 40px;
-            }
-            
-
-
-            #account_info_change_button {
-                background-color: navy; 
-                color:  white; 
-                position: relative;
-                width: 25%;
-                font-size: small;
-                height: 50px;
-                top: 0px;
-                left: 500px;
-            }
-
-
-                /* Styling for the Modal Sign Out Box */
+            /* Styling for the Account Info Change modal Box */
             #account_info_change_modal {
                 display: none; /* Hidden by default */
                 position: fixed; /* Stay in place */
-                z-index: 5; /* Sit on top */
+                z-index: 20; /* Sit on top */
                 left: 0;
                 top: 0;
                 width: 100%; /* Full width */
@@ -105,27 +57,16 @@
                 overflow: auto; /* Enable scroll if needed */
                 background-color: rgb(0,0,0); /* Fallback color */
                 background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                padding-top: 200px;
             }
+
 
             #change_account_modal_open {
                 display: block;
             }
 
-                /* Modal Content/Box */
-            #account_modal_content {
-                background-color: #fefefe;
-                margin: 15% auto; /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%; /* Could be more or less, depending on screen size */
-                height: 570px;
-                border-radius: 10px 10px 10px 10px;
-                position: relative;
-                top: -200px;
-            }
 
-                /* The Close Button */
-            #close_modal {
+            #close_account_change_modal {
                 color: #aaa;
                 float: right;
                 font-size: 28px;
@@ -134,15 +75,18 @@
                 width: 1%;
             }
 
-            #close_modal:hover,#close_modal:focus {
+
+            #close_account_change_modal:hover,#close_account_change_modal:focus {
                 color: black;
                 text-decoration: none;
                 cursor: pointer;
             }
 
-            #modal_text_cancel {
+
+            #modal_text_cancel_account {
                 font-size: x-large;
             }
+
 
             #confirm_change_button {
                 height: 50px;
@@ -157,11 +101,13 @@
                 right: 120px;
             }
 
+
             #confirm_change:hover {
                 background-color: rgb(248, 210, 95);
                 color: #000;
             
             }
+
 
             #confirm_change:active {
                 border: 0px;
@@ -169,342 +115,9 @@
                 box-shadow: none; 
             }
 
-
-            /* Account Information Change Modal Form Content Below */ 
-            #username_modal {
-                font-size: larger;
-                position: relative;
-                right: 220px;
-                top: 40px;
-            }
-            
-            #username_modal_input {
-                position: relative;
-                width: 250px;
-                height: 50px;
-                left: 100px;
-            }
-            
-            
-            #change_username_modal {
-                font-size: larger;
-                position: relative;
-                right: 202px;
-                top: 40px;
-            }
-            
-            #change_username_modal_input {
-                position: relative;
-                width: 250px;
-                height: 50px;
-                left: 100px;
-            }
-                
-            #change_email_modal {
-                font-size: larger;
-                position: relative;
-                right: 223px;
-                top: 40px;
-                
-
-            }
-
-            #change_email_modal_input {
-                position: relative;
-                width: 250px;
-                height: 50px;
-                left: 100px;
-            }
-            
-            
-            #change_first_name_modal {
-                font-size: larger;
-                position: relative;
-                right: 200px;
-                top: 40px;
-            }
-            
-            #change_first_name_modal_input {
-                position: relative;
-                width: 250px;
-                height: 50px;
-                left: 100px;
-            }
-            
-            #change_last_name_modal { 
-                font-size: larger;
-                position: relative;
-                right: 202px;
-                top: 50px;
-            }
-            
-            #change_last_name_modal_input {
-                position: relative;
-                width: 250px;
-                height: 50px;
-                left: 200px;
-            }  
+            /* Above is the styling for the account change modal */
 
 
-            #account_password_change {
-                position: relative;
-                font-size: large;
-                left: 50px;
-                top: 30px;
-            }
-
-            #account_password_change_form {
-
-            }
-
-            #account_password_change_button {
-                position: relative;
-                left: 500px;
-                bottom: 0px;
-            }
-
-
-            #account_first_name {
-                position: relative;
-                left: 50px;
-            }
-
-            #account_first_name_span {
-                position: relative;
-                left: 500px;
-                bottom: 40px;
-            }
-
-
-            #account_last_name {
-                position: relative;
-                left: 50px;
-            }
-
-
-            #account_last_name_span {
-                position: relative;
-                left: 500px;
-                bottom:40px;
-            }
-
-            #account_first_name {
-                position: relative;
-                left: 50px;
-            }
-
-            #account_first_name_span {
-                position: relative;
-                left: 500px;
-                bottom:40px;
-            }
-
-            #account_email {
-                position: relative;
-                left: 50px;
-            }
-
-            #account_email_span {
-                position: relative;
-                left: 500px;
-                bottom:40px;
-            }
-
-            #account_username {
-                position: relative;
-                left: 50px;
-            }
-
-            #account_username_span {
-                position: relative;
-                left: 500px;
-                bottom:40px;
-            }
-
-            #line1 {
-                border-top: 2px dotted black; 
-                opacity: 50%;  
-                position: relative; 
-                top: 0px;
-            }
-
-
-            #profile_picture_container {
-                position: relative;
-                width: 30%;
-                background-color: rgb(248, 210, 95);
-                z-index: 2;
-                bottom: 440px;
-                height: 500px;
-                border-radius: 10px 10px 10px 10px;
-                left: 550px;
-            }
-
-            #profile_picture_header {
-                font-size: medium;
-                position: relative;
-                left: 40px;
-                top: 20px;
-            }
-
-
-            #change_profile_pic_form {
-
-            }
-
-           
-            #photo_upload_input {
-                position: relative;
-                top: 80px;
-                width: 150px;
-                height: 45px;
-                left: 20px;
-                z-index: 4;
-            }
-            
-            #profile_pic_div {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                overflow:hidden;
-                display:flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                top: 30px;
-            }
-
-            #blank_profile_pic {
-                height: 148px;
-            }
-
-            #profile_pic_uploaded {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            #photo_upload_button {
-                position: relative;
-                top: 45px;
-                left: 21px;
-                width: 60%;
-                height: 47px;
-                border-radius: 10px 10px 10px 10px;
-                color: white;
-                background-color: navy;
-            }
-
-            #photo_button_span {
-                position: relative;
-                font-size: x-small;
-                bottom: 8px;
-                bottom: 10px;
-            }
-
-            #line_little {
-                border-top: 2px dotted black; 
-                opacity: 50%;  
-                position: relative; 
-                top: 20px;
-                width: 100%;
-            }
-             
-            
-            #contact_enquiry_container {
-                position: relative;
-                background-color: rgb(248, 210, 95);
-                height: auto;
-                width: 700px;
-                bottom: 700px;
-                z-index: 4;
-                border-radius: 10px 10px 10px 10px;
-            } 
-
-            #enquiry_title {
-                font-size: large;
-                color: #000;
-                text-decoration: underline;
-            }
-
-            #enquiry_container_2 {
-                background-color: #aaa;
-            }
-
-            #enquiry_container_3 {
-                background-color: aliceblue;
-            }
-
-            #enquiry_url {
-                font-size: medium;
-                color: #000;
-            }
-
-            #enquiry_url2 {
-                font-size: medium;
-                color: #000;
-                position: relative;
-                bottom: 41px;
-                left: 400px;
-            }
-            
-            #enquiry_email {
-                position: relative;
-                font-size: medium;
-                color: #000;
-                top: 20px;
-                right: 143px;
-            }
-                
-            #enquiry_select { 
-                position: relative;
-            
-            }
-                    
-            #enquiry_text {
-                padding-bottom: 100px;
-                position: relative;
-                top: 50px;
-            }
-
-            #line3 {
-                border-top: 2px solid black; 
-                opacity: 50%;  
-                position: relative; 
-                top: 0px;
-            }
-
-            #submitted_by {
-                position: relative;
-                bottom: 40px;
-                font-size: medium;
-                color: #000;
-                text-decoration: underline;
-            }
-
-            #submitted_by2 {
-                position: relative;
-                bottom: 10px;
-                font-size: medium;
-                color: #000;
-                left: 80px;
-            }
-
-            #submitted_by3 {
-                position: relative;
-                bottom: 10px;
-                font-size: medium;
-                color: #000;
-                left: 10px;
-            }
-
-            #email_space {
-               position: relative;
-               font-size: medium; 
-               color: #000;
-               top: 20px;
-               right: 239px;
-            }
 
         </style>
 
@@ -516,43 +129,48 @@
 
 
     <body>
-        <div class="header" style="font-size: xx-large;">
+        <div class="header">
             <center>The Vegan Meals Which Got Me Through University</center>
-            <div class="line" style="border-top: 1px solid #000; opacity: 50%;  position: relative; top: 15px;"></div>
+            <div class="top_line_account" id="top_line_account"></div>
 
-                <div class="header_buttons"  style="display:inline-flex; position: relative; top: 18px; left:500px;">
-                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Home</a></center>
-                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Recipes</a></center>
-                    <center><a href = "{% url 'blog:contact' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">Contact</a></center>
-                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" style="background-color: rgb(248, 210, 95); color:#000; margin-right: 10px; border: 0px;">About</a></center>
+                <div class="header_buttons_account" id="header_buttons_account">
+                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" id="header_button_account">Home</a></center>
+                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" id="header_button_account">Recipes</a></center>
+                    <center><a href = "{% url 'blog:contact' %}" class="btn btn-secondary" id="header_button_account">Contact</a></center>
+                    <center><a href = "{% url 'blog:blog_index' %}" class="btn btn-secondary" id="header_button_account">About</a></center>
                     
-                    <button class="btn btn-secondary" id="header_button_modal" style="position: relative; top: 5px;">Sign-Out</button>
-                    <div id="logout_modal" class="modal">
-                        <div class="modal-content">
-                            <span id="close_account_change_modal" class="close">&times;</span>
-                            <center><p id="modal_text">Are you sure you want to sign out?</p></center>
+
+                    <button class="btn btn-secondary" id="header_button_modal_account">Sign-Out</button>
+                   
+                    
+                    <!-- Below is the code for the logout modal -->
+                    <div id="logout_modal_account" class="modal">
+                        <div class="logout_modal_content_account" id="logout_modal_content_account">
+                            <span id="close_signout_modal_account" class="close">&times;</span>
+                            <center><p id="modal_text_cancel_signout">Are you sure you want to sign out?</p></center>
                             <center>
-                                <form method='post' id="account_info_change_form" action="{% url 'users:logout_user' %}">
+                                <form method='post' id="signout_form" action="{% url 'users:logout_user' %}">
                                     {% csrf_token %}
                                     
-                                    <button class="btn-secondary" id="confirm_signout" >Sign-Out</button>
+                                    <button class="btn-secondary" id="confirm_signout_account" >Sign-Out</button>
                                 </form>                             
                             </center> 
                         </div>
                     </div>  
 
+
                     
-                    <form method="post" style="height: 0px; z-index: 2; position: relative; font-size: small; top: 3px;">
+                    <form method="post" id="header_form_account">
                         {% csrf_token %}
                         {{ SearchForm }}
-                        <input type="text" style="height: 27px; width: 200px;" placeholder="Enter Text Here...">
+                        <input type="text" id="header_form_account_input" placeholder="Enter Text Here...">
                         
-                        <button type="submit" id="submit_button_header">Search</button>
+                        <button type="submit" id="submit_button_header_account">Search</button>
                     </form>
                 </div>
 
 
-            <div class="line" style="border-top: 1px solid #000; opacity: 50%; top: 26px; position: relative;"></div>
+            <div class="top_line_account2" id="top_line_account2"></div>
         </div>
 
 
@@ -575,27 +193,30 @@
                 
                     <h3 id="account_first_name">First Name:</h3>
                     {% if user.first_name %}
-                        <span id="account_first_name_span">{{ user.first_name }}</span>
+                        <span id="account_first_name_span_nonsuper">{{ user.first_name }}</span>
                     {% else %}
-                        <span id="account_first_name_span">No First Name Information Given Yet</span>
+                        <span id="account_first_name_span_nonsuper">No First Name Information Given Yet</span>
                     {% endif %}
                     
                     <h3 id="account_last_name">Last Name:</h3>
                     {% if user.last_name %}
-                        <span id="account_last_name_span">{{ user.last_name }}</span>
+                        <span id="account_last_name_span_nonsuper">{{ user.last_name }}</span>
                     {% else %}
-                        <span id="account_last_name_span">No Last Name Information Given Yet</span>
+                        <span id="account_last_name_span_nonsuper">No Last Name Information Given Yet</span>
                     {% endif %}
 
                     <h3 id="account_email">Email:</h3>
-                    <span id="account_email_span">{{ user.email }}</span>
-
+                    {% if user.email %}
+                       <span id="account_email_span_nonsuper">{{ user.email }}</span>
+                    {% else %}
+                        <span id="account_email_span_nonsuper">No Email Information Given yet</span>
+                    {% endif %}
 
                     <h3 id="account_username">Username:</h3>
-                    <span id="account_username_span">{{ user }}</span>
+                    <span id="account_username_span_nonsuper">{{ user }}</span>
 
 
-                    <div class="line1" id="line1"></div>
+                    <div class="line1" id="line1_account"></div>
 
 
                     <!-- Have password obscured by wildcards * 
@@ -614,15 +235,18 @@
                 <button class="btn btn-secondary" id="account_info_change_button">Change Account Information</button>
 
 
-                <div id="account_info_change_modal" class="modal">
+                <div id="account_info_change_modal" class="account_change_modal">
                     <div class="account_modal-content" id="account_modal_content">
                         <span id="close_account_change_modal" class="close">&times;</span>
-                        <center><p id="modal_text_cancel">Are you sure you want to cancel?</p></center>
+                        <center><p id="modal_text_cancel_account">Are you sure you want to cancel?</p></center>
 
                         <center>
                             <form method='post' id="account_info_change_form" action="{% url 'users:account_info_change' %}">
                                 {% csrf_token %}
                                 
+                                <h4 id="username_modal">Old Username:</h4>
+                                <input type="text" id="username_modal_input" placeholder="REQUIRED" name="old_username">
+
                                 <h4 id="change_username_modal">Change Username:</h4>
                                 <input type="text" id="change_username_modal_input" placeholder="Enter New Username">
 
@@ -671,7 +295,7 @@
                     <h3 id="account_username">Username:</h3>
                     <span id="account_username_span">{{ user.username }}</span>
 
-                    <div class="line1" id="line1"></div>
+                    <div class="line1" id="line1_account"></div>
                     
                     <!-- Have password obscured by wildcards * 
                         Ask for current password prior to being able to change  
@@ -695,10 +319,10 @@
                 <button class="btn btn-secondary" id="account_info_change_button">Change Account Information</button>
 
 
-                <div id="account_info_change_modal" class="modal">
+                <div id="account_info_change_modal" class="account_change_modal">
                     <div class="account_modal-content" id="account_modal_content">
-                        <span id="close_modal" class="close">&times;</span>
-                        <center><p id="modal_text_cancel">Are you sure you want to cancel?</p></center>
+                        <span id="close_account_change_modal" class="close">&times;</span>
+                        <center><p id="modal_text_cancel_account">Are you sure you want to cancel?</p></center>
 
                         <center>
                             <form method='post' id="account_info_change_form" action="account_info_change/">
@@ -797,18 +421,50 @@
                 
                 {% for enquiry in enquiries %}
                 <div class="container" id="enquiry_container_3">
-                    <h3><a href="{% url 'users:enquiries' %}" id="enquiry_url" class="Enquiry_URL">Submitted On:</a></h3> 
-                    <h3><a href="{% url 'users:enquiries' %}" id="enquiry_url2" class="Enquiry_URL2">{{enquiry.created_on}}</a></h3> 
+                    <div class="container" id="submitted_on_container">
+                        <h3><a href="{% url 'users:enquiries' %}" id="enquiry_url" class="Enquiry_URL">Submitted On:</a></h3>
+                    </div>
+
+                    <div class="container" id="submitted_on_date_container">    
+                        <h3><a href="{% url 'users:enquiries' %}" id="enquiry_url2" class="Enquiry_URL2">{{enquiry.created_on}}</a></h3> 
+                    </div>
+                     
+                    <div class="container" id="submitted_by_container">
+                        <small id="submitted_by"> Submitted By:</small> 
+                    </div>
                     
-                    <small id="submitted_by"> Submitted By:</small> 
-                    <small id="submitted_by3">First / Last Name:</small>
-                    <small id="submitted_by2">{{ enquiry.fname }}  {{ enquiry.lname }}</small>       
+                    <div class="container" id="submitted_by_name_title_container">
+                        <small id="submitted_by3">First / Last Name:</small>
+                    </div>
                     
-                    <small id="email_space">Email Address:</small>
-                    <small id="enquiry_email">{{enquiry.email}}</small>
-                    <small id="enquiry_select">{{ enquiry.select }}</small>
-                    
-                    <p id="enquiry_text">{{ enquiry.message }}</p>
+                    <div class="container" id="submitted_by_names_container">
+                        <small id="submitted_by2">{{ enquiry.fname }}  {{ enquiry.lname }}</small>       
+                    </div>
+
+                    <div class="container" id="email_container">
+                        <small id="email_space">Email Address:</small>
+                    </div>
+
+                    <div class="container" id="email_in_container">
+                        <small id="enquiry_email">{{enquiry.email}}</small>
+                    </div>
+
+                    <div class="container" id="select_title_container">
+                        Enquiry Type
+                    </div>
+
+                    <div class="container" id="select_container">
+                        <small id="enquiry_select_account">{{ enquiry.select }}</small>
+                    </div>
+
+                    <div class="container" id="message_title_container">
+                        Enquiry Message:
+                    </div>
+
+                    <div class="container" id="message_container">
+                        {{enquiry.message}}
+                    </div>
+
                     <div class="line3" id="line3"></div>
 
                 </div>

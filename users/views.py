@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm, LoginForm, UpdateUserForm, UploadPhotoForm
 from django.shortcuts import HttpResponseRedirect
@@ -9,6 +10,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .forms import ContactForm
+
+# Remove below if dont fit in passwo
+from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+
 
 import random
 
@@ -26,8 +32,6 @@ import random
 
 def test(request):
     return render(request, f'registration/test.html')
-
-
 
 
 
@@ -74,44 +78,6 @@ def sign_up(request):
     return render(request, 'registration/register.html', context)
 
 
-"""
-Try to use code from below to bring account details to the account page
-
-
-
-def blog_detail_responsive(request, pk):
-    post = Post.objects.get(pk=pk)
-    form = CommentForm()
-    if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = Comment(
-                author=form.cleaned_data["author"],
-                body=form.cleaned_data["body"],
-                post=post,
-            )
-            comment.save()
-            return HttpResponseRedirect(request.path_info)
-
-    comments = Comment.objects.filter(post=post)
-    context = {
-        "post": post,
-        "comments": comments,
-        "form" : CommentForm(),
-    }
-    return render(request, "blog/detail.html", context)
-
-
-def blog_index_reponsive(request):
-    posts = Post.objects.all().order_by("-created_on")
-    context = {
-        "posts" : posts,
-    }
-    return render(request, "blog/responsive.html", context)
-
-"""
-
-
 
 
 def account(request):
@@ -125,6 +91,7 @@ def account(request):
 
 def change_password_page(request):
     return render(request, 'registration/change_password.html')
+
 
 def change_password(request):
     if request.method == 'POST':
@@ -142,6 +109,7 @@ def change_password(request):
 
 
 def account_info_change(request):
+    print('account_info_change called')
     if request.method == 'POST':
         print(request.POST)
         user = User.objects.get(username=request.POST['old_username'])
@@ -205,23 +173,29 @@ def account_info_change(request):
 
 
 def logout_user(request):
+    print('logout_user called')
     logout(request)
     return redirect('/')
+
+
+def login(request): 
+    return render(request, 'registration/login.html')
+
 
 
 def submit_login(request):
     print('submit login called')
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
-        print('Form pre valid check')
-        print('LoginForm', form)
-        print('request\n\n', request.POST)
-        print('\n\n')
+        # print('Form pre valid check')
+        # print('LoginForm', form)
+        # print('request\n\n', request.POST)
+        # print('\n\n')
 
-        print('form valid?', form.is_valid)
+        # print('form valid?', form.is_valid)
 
         if form.is_valid():
-            print('Form is valid')
+            # print('Form is valid')
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
             user = authenticate(request, username=username, password=password)
@@ -229,7 +203,7 @@ def submit_login(request):
             if user is not None:
                 user.save()
                 login(request, user)
-                print('User Authenticated')
+                # print('User Authenticated')
                 return redirect('/')
             
             else:
@@ -260,6 +234,52 @@ def submit_login(request):
 
     context = {'form': form}
     return render(request, 'registration/login.html', context)
+
+
+
+def forgotten_password(request): 
+    """
+    Directs the user to the forgotten password template
+    """
+    context = {} 
+    return render(request, 'registration/forgotten_password.html', context)
+
+
+def account(request):
+    enquiries = Enquiry.objects.all().order_by('-created_on')
+    print('Enquiries in enquiries_index', enquiries)
+    context = {
+        'enquiries':enquiries,
+    }
+    return render(request, 'registration/account.html', context)
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'users/password_reset.html'
+    email_template_name = 'users/password_reset_email.html'
+    subject_template_name = 'users/password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    
+    #replace success URL with a page which states the email was delivered.
+    success_url = reverse_lazy('users/account/')
+
+
+
+def reset_password(request, PasswordResetView):
+    """
+    Sends a password reset email to the user.
+    """
+    print('reset_password function called')
+
+    email_template_name = 'users/forgotten_password.html'
+    subject_template_name = 'users/forgotten_password.html'
+    success_message = 'We have emailed you instructions for resetting your password. If an account exists which uses the email given, you should receive an email shortly. Please be sure to check your spam!'
+    success_url = reverse_lazy('users:login.html')
+
+
 
 
 

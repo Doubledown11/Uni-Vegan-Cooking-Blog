@@ -1,13 +1,14 @@
-// JavaScript Code for the Typewriter Title Effect 
+// JavaScript Code for the Dark Mode Effect 
 
  
 
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Dark Mode JavaScript file loaded!");
-        
-    // Figure out how to keep dark mode after refreshing the page.
+
+    // Still need to ID how to keep dark mode activated after refreshing the page
     let dark = 0;
+
 
     document.getElementById('checkbox').addEventListener('click', function () {
         // Used to toggle the elements which have been altered using .style.<css styling choice here>
@@ -72,10 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
         line2.classList.toggle('dark_mode_line2');
 
 
-
         // Body  
         var body = document.getElementById('body');
         body.classList.toggle('dark_mode_body');
+
+        var body_CP = document.getElementById('body_CP');
+        body_CP.classList.toggle('body_CP_dark_mode');
+        
+
 
         // Posts Title
         var Posts_Title = document.getElementById('Posts');
@@ -114,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Dark Mode Slider Toggle
         if (dark === 1) {
-
 
         } else if (dark === 0) {
 

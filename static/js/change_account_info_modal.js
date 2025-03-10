@@ -1,9 +1,9 @@
-// JavaScript Code for the Sign-Out Modal  
+// JavaScript Code for the Account Information Modal  
 
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    console.log('JavaScript for modal has opened')
+    console.log('JavaScript for account information modal has opened')
 
     // Get Modal 
     modal_ = document.getElementById('account_info_change_modal');

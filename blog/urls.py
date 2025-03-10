@@ -27,6 +27,10 @@ urlpatterns = [
 
     path('send_enquiry/', views.send_enquiry, name='send_enquiry'),
 
+
+    # Below is the views for the cache and the dark mode implementation 
+    path('update_cache/', views.update_cache, name='update_cache'),
+
 ]
 
 

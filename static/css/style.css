@@ -1,4 +1,6 @@
 
+/* Below are the stylings for the base.html page */ 
+
 html {
   width: 100%;
   background-color: aqua;
@@ -82,10 +84,11 @@ body {
 #header_input {
   height: 27px; 
   width: 200px;
+  background-color: white;
 }
 
 #header_input::placeholder {
-
+  color: #000;
 }
 
 #header_submit_button {
@@ -113,13 +116,281 @@ body {
 }
 
 
+#Post_Url {
+  color: rgb(248, 210, 95);
+}
+
+
+/* 
+#category_name {
+  color: #00d5b7;
+} 
+*/
+
+
+
+
+/* The switch - the box around the slider */
+#dark_mode_switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+
+ /* Hide default HTML checkbox */
+.dark_mode_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+/* The slider */
+#slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+#slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+/* .slider:after {
+  background-color: black;
+}  
+*/
+
+
+input:checked + #slider {
+  background-color: white;
+}
+
+
+input:checked + #slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: black;
+}
+
+
+/* Rounded sliders */
+#slider.round {
+  border-radius: 34px;
+}
+
+
+#slider.round:before {
+  border-radius: 50%;
+}
+
+
+#dark_mode_container {
+  left: 600px;
+  position: relative;
+  width: 20px;
+  height: 10px;
+  bottom: 50px;
+}
+
+
+#toggle_title {
+  position: relative;
+  right: 50px;
+  top: 35px;
+}
+
+
+/* The below stylings are for the dark mode option */
+.dark_mode_header {
+  background-color: rgb(22, 22, 22); 
+}
+
+
+.dark_mode_Title_Text {
+  color: silver;
+}
+
+
+.dark_mode_line1 {
+  border-bottom: 1px solid red;
+  color: red; 
+  background-color: red;
+}
+
+
+.dark_mode_line2 {
+  border-bottom: 1px solid red; 
+  color: red;
+  background-color: red;
+}
+
+
+.dark_mode_body {
+  background-color: rgb(100, 100, 98); 
+}
+
+
+.dark_mode_header_button {
+  color: black;
+  background-color: white;
+}
+
+
+.dark_mode_header_submit_button {
+  color: black;
+  background-color: white;
+}
+
+
+.dark_mode_Posts_Title {
+  color: silver;            
+}
+
+
+.dark_mode_Post_Url {
+  color: silver;
+}
+
+
+.dark_mode_post_date_category {
+  color: silver;
+}
+
+
+.dark_mode_category_name {
+  color: silver;
+}
+
+
+.dark_mode_post_body {
+  color: silver;
+}
+
+
+.dark_mode_toggle_title {
+  color: silver;
+}
+
+
+/* Styling for the Modal Sign Out Box */
+#logout_modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+#logout_modal_open {
+  display: block;
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 350px;
+  width: 500px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#header_button_modal {
+  background-color: rgb(248, 210, 95); 
+  color:#000; 
+  margin-right: 10px; 
+  border: 0px;
+  height: 70%;
+  top: 10px;
+  position: relative;
+}
+
+
+#modal_text {
+  font-size: x-large;
+}
+
+
+/* The Close Button close_signout_modal */
+#close_modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  height: 1%;
+  width: 1%;
+  top: 5px;
+  position: relative;
+} 
+
+
+#close_modal:hover, #close_modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#confirm_signout {
+  height: 50px;
+  width: 200px;
+  border-radius: 10px 10px 10px 10px;
+  font-size: medium;
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: 0px;
+}
+
+
+#confirm_signout:hover {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+
+}
+
+
+#confirm_signout:active {
+  border: 0px;
+  outline: none;
+  box-shadow: none; 
+}
 
 
 
 
 
 
-/* Below is for the styl change at 855px */
+/* Below is for the style change at 855px for base.html */
 
 @media only screen and (max-width: 855px) {
   html {
@@ -229,6 +500,1785 @@ body {
 #post_container {
   position: relative;
 }
+
+
+
+/* Above are the stylings for the base.html page */ 
+
+
+
+/* --------------------------------------------- */
+
+
+
+/* Below are the stylings for the contact.html page */ 
+
+
+#html_contact {
+  background-color: white;
+  z-index: 2;
+}
+
+
+#submit_button_header {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: #000 1px solid;
+  border-radius: 5px 5px 5px 5px;
+}
+
+
+#contact_me_header {
+  position: relative;
+  top: 50px;
+  font-size: 40px;
+  color: #000;
+  right: 280px;
+}
+
+
+#contact_container {
+  padding-bottom: 450px;
+  position: relative; 
+  top: 150px;                
+}
+
+
+#email_div {
+  position: relative;
+  width: 100%;
+  background-color: rgb(248, 210, 95);
+  z-index: 0;
+  top: 60px;
+  height: 140px;
+  box-shadow: 5px 10px #000;
+}
+
+
+#email_header {
+  font-size: larger;
+  position: relative;
+  z-index: 0;
+}
+
+
+#github_div {
+  position: relative;
+  width: 100%;
+  background-color: rgb(248, 210, 95);
+  z-index: 0;
+  top: 160px;
+  height: 140px;
+  box-shadow: 5px 10px #000;
+}
+
+
+#github_header {
+  font-size: larger;
+  position: relative;
+  z-index: 0;
+}
+
+
+#instagram_div {
+  position: relative;
+  width: 100%;
+  background-color: rgb(248, 210, 95);
+  z-index: 0;
+  top: 260px;
+  height: 140px;
+  box-shadow: 5px 10px #000;
+}
+
+
+#instagram_header {
+  font-size: larger;
+  position: relative;
+  z-index: 0;
+}
+
+
+#other_div {
+  position: relative;
+  width: 100%;
+  background-color: rgb(248, 210, 95);
+  z-index: 0;
+  top: 360px;
+  height: 300px;
+  box-shadow: 5px 10px #000;
+}
+
+
+#other_header {
+  font-size: larger;
+  position: relative;
+  left: 250px;
+  z-index: 0;
+}
+
+
+#enquiry_form {
+  height: 500px;
+}
+
+
+#enquiry_input {
+  height: 100px;
+  background-color: white;
+}
+
+
+#enquiry_input::placeholder {
+  color: #000;
+}
+
+
+#enquiry_select {
+  position: relative;
+  top: 100px;
+  right: 202px;
+  background-color: white;
+  color: #000;
+}
+
+
+#enquiry_options {
+  position: relative;
+  top: 100px;
+  left: 50px;
+  background-color: white;
+  color: #000;
+}
+
+
+#enquiry_form_submit_button {
+  position: relative;
+  top: 80px;
+  left: 0px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: navy;
+  color: white;
+  z-index: 4;
+  width: 100%;
+}
+
+
+#enquiry_first_name {
+  position: relative;
+  top: -25px;
+  left: 140px;
+  background-color: white;
+  color: #000;
+}
+
+
+#enquiry_first_name::placeholder {
+  color: #000;
+}
+
+
+#enquiry_last_name {
+  position: relative;
+  top: -20px;
+  left: 473px;
+  background-color: white;
+  color: #000;
+}
+
+
+#enquiry_last_name::placeholder {
+  color: #000;
+}
+
+
+#enquiry_email {
+  position: relative;
+  top: 50px;
+  left: 270px;
+  background-color: white;
+}
+
+
+#enquiry_email::placeholder {
+  color: #000;
+}
+
+
+#header_input_contact {
+  height: 27px; 
+  width: 200px;
+  background-color: white;
+}
+
+
+#header_input::placeholder {
+  color: #000;
+}
+
+
+#header_form_contact {
+  height: 0px; 
+  z-index: 2; 
+  position: relative; 
+  font-size: small; 
+  top: 3px;
+}
+
+
+#header_buttons_contact {
+  display:inline-flex; 
+  position: relative; 
+  top: 18px; 
+  left:500px;
+}
+
+
+#header_button_contact {
+  display:inline-flex; 
+  position: relative; 
+  background-color: rgb(248, 210, 95); 
+  color: #000;
+  border: 0px;
+  margin-right: 10px;
+}
+
+
+#header_button_modal_contact {
+  position: relative;
+  top: 11px;
+  display: inline-flex;
+  border: 0px;
+  background-color: rgb(248, 210, 95); 
+  color: #000;
+}
+
+
+#header_button_modal_contact_signed_out {
+  position: relative;
+  top: 20px;
+  display: inline-flex;
+  border: 0px;
+  background-color: rgb(248, 210, 95); 
+  color: #000;
+}
+
+
+#line_contact {
+  border-top: 1px solid #000; 
+  opacity: 50%;  
+  position: relative; 
+  top: 15px;
+}
+
+
+#line_contact_2 {
+  border-top: 1px solid #000; 
+  opacity: 50%; 
+  top: 26px; 
+  position: relative;
+}
+
+
+#contact_footer {
+  height: 100px;
+}
+
+
+#container_contact_bottom_1 {
+  height: 50px;
+}
+
+
+#container_contact_bottom_2 {
+  height: 50px;
+}
+
+
+
+
+/* Above are the stylings for the contact.html page */ 
+
+
+
+/* --------------------------------------------- */
+
+
+
+/* Below are the stylings for the account.html page */ 
+
+
+#html_account {
+  background-color: white;
+  z-index: 0;
+  height: 100%;
+}
+
+
+#my_account_header {
+  position: relative;
+  top: 50px;
+  font-size: 40px;
+  color: #000;
+  right: 280px;
+}
+
+
+#my_account_container {
+  padding-bottom: 350px;
+  position: relative; 
+  top: 150px;                
+}
+
+
+#account_information_container {
+  position: relative;
+  width: 100%;
+  background-color: rgb(248, 210, 95);
+  z-index: 0;
+  top: 60px;
+  height: 480px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 5px 10px #000;
+}
+
+
+#account_information_header {
+  font-size: larger;
+  position: relative;
+  left: 250px;
+}
+
+
+#line_account {
+  border-top: 1px solid #000; 
+  opacity: 50%;  
+  position: relative; 
+  top: 15px;
+}
+
+
+#header_buttons_account {
+  display:inline-flex; 
+  position: relative; 
+  top: 40px; 
+  right:0px;
+} 
+  
+
+#header_button_account {
+  display:inline-flex; 
+  position: relative; 
+  background-color: rgb(248, 210, 95); 
+  color: #000;
+  border: 0px;
+  margin-right: 10px;
+}
+
+
+#header_form_account {
+  height: 0px; 
+  z-index: 2; 
+  position: relative; 
+  font-size: small; 
+  top: 11px;
+  background-color: white;
+  color: #000;
+  left: 900px;
+}
+
+
+#header_form_account_input {
+  height: 27px; 
+  width: 200px;
+  background-color: white;
+  color: #000;
+}
+
+
+#header_form_account_input::placeholder {
+  color: #000;
+}
+
+
+
+#submit_button_header_account {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: #000 1px solid;
+  border-radius: 5px 5px 5px 5px;
+}
+
+
+#account_info_change_button {
+  background-color: navy; 
+  color:  white; 
+  position: relative;
+  width: 25%;
+  font-size: small;
+  height: 50px;
+  top: 0px;
+  left: 500px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#account_password_change_button {
+  position: relative;
+  left: 500px;
+  bottom: 0px;
+  background-color: navy;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#account_password_change {
+  position: relative;
+  font-size: large;
+  left: 50px;
+  top: 30px;
+}
+
+
+#account_password_change_form {
+
+}
+
+
+
+#account_first_name {
+  position: relative;
+  left: 50px;
+  
+}
+
+#account_first_name_span {
+  position: relative;
+  left: 500px;
+  bottom: 40px;
+}
+
+
+#account_last_name {
+  position: relative;
+  left: 50px;
+}
+
+
+#account_last_name_span {
+  position: relative;
+  left: 500px;
+  bottom:40px;
+}
+
+
+#account_last_name_span_nonsuper {
+  position: relative;
+  left: 400px;
+  bottom: 28px;
+}
+
+
+#account_first_name {
+  position: relative;
+  left: 50px;
+  width: 150px;
+  height: auto;
+}
+
+
+#account_first_name_span {
+  position: relative;
+  left: 500px;
+  bottom:40px;
+}
+
+
+#account_first_name_span_nonsuper {
+  position: relative;
+  left: 400px;
+  bottom: 28px;
+  height: auto;
+}
+
+
+#account_email {
+  position: relative;
+  left: 50px;
+  height: auto;
+  width: 150px;
+}
+
+
+#account_email_span {
+  position: relative;
+  left: 500px;
+  bottom:40px;
+}
+
+
+#account_email_span_nonsuper {
+  position: relative;
+  left: 399px;
+  bottom: 35px;
+}
+
+
+#account_username {
+  position: relative;
+  left: 50px;
+  height: auto;
+  width: 150px;
+}
+
+
+#account_username_span {
+  position: relative;
+  left: 500px;
+  bottom:40px;
+}
+
+
+#account_username_span_nonsuper {
+  position: relative;
+  left: 398px;
+  bottom: 40px;
+}
+
+
+#line1_account {
+  border-top: 2px dotted black; 
+  opacity: 50%;  
+  position: relative; 
+  top: 0px;
+}
+
+
+#contact_enquiry_container {
+  position: relative;
+  background-color: rgb(248, 210, 95);
+  height: auto;
+  width: 700px;
+  bottom: 700px;
+  z-index: 0;
+  border-radius: 10px 10px 10px 10px;
+  padding-bottom: 30px;
+  box-shadow: 5px 10px #000;
+} 
+
+
+#enquiry_title {
+  font-size: large;
+  color: #000;
+  text-decoration: underline;
+  padding-top: 5px;
+}
+
+
+#enquiry_container_2 {
+  background-color: #aaa;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#enquiry_container_3 {
+  background-color: aliceblue;
+}
+
+
+#enquiry_url {
+  font-size: medium;
+  color: #000;
+}
+
+
+#enquiry_url2 {
+  font-size: medium;
+  color: #000;
+  position: relative;
+  bottom: 41px;
+  left: 400px;
+} /* Style for the actual date displayed*/
+
+
+#enquiry_email_account {
+  position: relative;
+  font-size: medium;
+  color: #000;
+  bottom: 22px;
+  left: 300px;
+} /* Style for the actual email displayed */ 
+  
+
+#enquiry_select_account { 
+  position: relative;
+  bottom: 17px;
+  left: 300px;
+  font-size: medium;
+} /* Style for the actual enquiry type select option */ 
+    
+
+#select_title_container {
+  position: relative;
+  font-size: medium;
+  bottom: -5px;
+  left: 47px;
+} /* Style for the enquiry type selection option title */
+
+
+#message_container {
+  height: auto;
+  padding-bottom: 30px;
+  padding-top: 20px;
+  color: #000;
+} /* Style for the container which holds the message text */
+
+
+#message_title_container {
+  position: relative;
+  font-size: medium;
+  text-decoration: underline;
+  color: #000;
+} /* Style for the enquiry message title */
+
+
+#line3 {
+  border-top: 2px solid black; 
+  opacity: 50%;  
+  position: relative; 
+  top: 0px;
+  padding-bottom: 10px;
+} /* Style for the line which sepates enquiry entries */
+
+
+#submitted_by {
+  position: relative;
+  bottom: 40px;
+  font-size: medium;
+  color: #000;
+  text-decoration: underline;
+} /* Style for the text which reads Submitted By: */
+
+
+#submitted_by2 {
+  position: relative;
+  bottom: 33px;
+  font-size: medium;
+  color: black;
+  left: 300px;
+} /* Style for the actual name of the person who submitted the enquiry */ 
+
+
+#submitted_by3 {
+  position: relative;
+  bottom: 10px;
+  font-size: medium;
+  color: #000;
+  left: 50px;
+} /* Style for the line of text which reads First / Last Name */ 
+
+
+#email_space {
+  position: relative;
+  font-size: medium; 
+  color: #000;
+  top: 0px;
+  left: 49px;
+} /* Style for the email title */
+
+
+#submitted_on_container {
+   
+}
+
+
+#account_search_input {
+  background-color: white;
+  color: #000;
+  height: 27px; 
+  width: 200px; 
+}
+
+
+#top_line_account {
+  border-top: 1px solid #000; 
+  opacity: 50%;  
+  position: relative; 
+  top: 45px;
+}
+
+#top_line_account2 {
+  border-top: 1px solid #000; 
+  opacity: 50%; 
+  top: 42px; 
+  position: relative;
+}
+
+
+
+/* Below is the styling for the profile picture upload feature */
+#profile_picture_container {
+  position: relative;
+  width: 30%;
+  background-color: rgb(248, 210, 95);
+  z-index: 0;
+  bottom: 420px;
+  height: 480px;
+  border-radius: 10px 10px 10px 10px;
+  left: 550px;
+  box-shadow: 5px 10px #000;
+
+}
+
+
+#profile_picture_header {
+  font-size: medium;
+  position: relative;
+  left: 40px;
+  top: 20px;
+}
+
+
+#change_profile_pic_form {
+  z-index: 0;
+}
+
+
+#photo_upload_input {
+  position: relative;
+  top: 80px;
+  width: 150px;
+  height: 45px;
+  left: 20px;
+  z-index: 2;
+}
+
+
+#profile_pic_div {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow:hidden;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 30px;
+}
+
+
+#blank_profile_pic {
+  height: 148px;
+}
+
+
+#profile_pic_uploaded {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+#photo_upload_button {
+  position: relative;
+  top: 45px;
+  left: 21px;
+  width: 60%;
+  height: 47px;
+  border-radius: 10px 10px 10px 10px;
+  color: white;
+  background-color: navy;
+}
+
+
+#photo_button_span {
+  position: relative;
+  font-size: x-small;
+  bottom: 8px;
+  bottom: 10px;
+}
+
+
+#line_little {
+  border-top: 2px dotted black; 
+  opacity: 50%;  
+  position: relative; 
+  top: 20px;
+  width: 100%;
+}
+
+
+
+
+/* Below is the styling for the Account page change account information modal*/
+
+#change_information_header {
+  position: relative;
+  left: 50px;
+  font-size: medium;
+  top: 40px;
+}
+
+
+#username_modal {
+  font-size: larger;
+  position: relative;
+  right: 220px;
+  top: 40px;
+}
+
+
+#username_modal_input {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  left: 100px;
+  background-color: white;
+  color: #000;
+}
+
+
+            
+#change_username_modal {
+  font-size: larger;
+  position: relative;
+  right: 202px;
+  top: 40px;
+}
+
+
+#change_username_modal_input {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  left: 100px;
+  background-color: white;
+  color: #000;
+}
+  
+
+#change_email_modal {
+  font-size: larger;
+  position: relative;
+  right: 223px;
+  top: 40px;
+  
+
+}
+
+
+#change_email_modal_input {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  left: 100px;
+  background-color: white;
+  color: #000;
+}
+
+
+#change_first_name_modal {
+  font-size: larger;
+  position: relative;
+  right: 200px;
+  top: 40px;
+}
+
+
+#change_first_name_modal_input {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  left: 100px;
+  background-color: white;
+  color: #000;
+}
+
+
+#change_last_name_modal { 
+  font-size: larger;
+  position: relative;
+  right: 202px;
+  top: 50px;
+}
+
+
+#change_last_name_modal_input {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  left: 200px;
+  background-color: white;
+  color: #000;
+}  
+
+
+
+
+
+/* Below is the styling for Account.html signout modal */
+#header_button_modal_account {
+  height: 70%;
+  width: 90px;
+  border-radius: 10px 10px 10px 10px;
+  font-size: medium;
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: 0px;
+  top: 10px;
+  position: relative;
+  margin-right: 10px;
+}
+
+
+/* Signout Modal Content/Box */
+#header_button_modal {
+  background-color: rgb(248, 210, 95); 
+  color:#000; 
+  margin-right: 10px; 
+  height: 70%;
+  top: 10px;
+  position: relative; 
+}
+
+
+#logout_modal_account {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+#logout_modal_content_account {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 350px;
+  width: 500px;
+  border-radius: 10px 10px 10px 10px;
+  z-index: 5;
+}
+
+
+#logout_modal_open {
+  display: block;
+}
+
+
+/* The Close Button close_signout_modal */
+#close_signout_modal_account {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  height: 1%;
+  width: 1%;
+  top: 5px;
+  right: 455px;
+  position: relative;
+} 
+
+
+#close_signout_modal_account:hover, #close_signout_modal_account:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#modal_text_cancel_signout {
+  font-size: x-large;
+}
+
+
+#confirm_signout_account {
+  height: 50px;
+  width: 200px;
+  border-radius: 10px 10px 10px 10px;
+  font-size: medium;
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: 0px;
+}
+
+
+#confirm_signout_account:hover {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+}
+
+
+#confirm_signout_account:active {
+  border: 0px;
+  outline: none;
+  box-shadow: none; 
+}
+/* Above is the styling for the signout modal */
+
+
+/* Above is the styling for Account.html */
+
+
+
+
+
+
+
+/* Below is the styling for the logout on the contact.html page */
+#logout_modal_contact {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+#logout_modal_open {
+  display: block;
+}
+
+
+/* Modal Content/Box */
+#modal-content-contact {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 350px;
+  width: 500px;
+  border-radius: 10px 10px 10px 10px;
+  z-index: 5;
+}
+
+
+#header_button_modal_contact {
+  background-color: rgb(248, 210, 95); 
+  color:#000; 
+  margin-right: 10px; 
+  border: 0px;
+  height: 70%;
+  top: 10px;
+  position: relative;
+}
+
+
+#modal_text_contact {
+  font-size: x-large;
+}
+
+
+/* The Close Button close_signout_modal */
+#close_modal_contact {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  height: 1%;
+  width: 1%;
+  top: 5px;
+  position: relative;
+  right: 455px;
+} 
+
+
+#close_modal_contact:hover, #close_modal_contact:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#confirm_signout_contact {
+  height: 50px;
+  width: 200px;
+  border-radius: 10px 10px 10px 10px;
+  font-size: medium;
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: 0px;
+}
+
+
+#confirm_signout_contact:hover {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+
+}
+
+
+#confirm_signout_contact:active {
+  border: 0px;
+  outline: none;
+  box-shadow: none; 
+}
+
+
+/* Above is the styling for the signout modal on contact*/ 
+
+
+
+
+
+
+
+/* Below is the styling for the change_password.html page */
+
+.body_CP {
+  height: 100vh;
+}
+
+.body_CP_dark_mode {
+  background-color: rgb(100, 100, 98); 
+}
+
+
+
+#change_password_form {
+  position: relative;
+  background-color: rgb(248, 210, 95);
+  z-index: 3;
+  width: 500px;
+  height: 400px;
+  left: 0;
+  top: 250px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: #000 5px 10px;
+}
+
+
+#change_password_button {
+  position: relative;
+  z-index: 3;
+  width: 90%;
+  left: 25px;
+  top: 35px;
+  background-color: navy;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+  font-size: medium;
+}
+
+
+#change_password_title {
+  font-size: x-large;
+  position: relative;
+  left: 160px;
+  top: 20px;
+  text-decoration: underline;
+}
+
+
+#password_header {
+  font-size: large;
+  position: relative;
+  left: 50px;
+  top: 46px;
+  width: 150px;
+
+}
+
+
+#password_confirm_header {
+  font-size: large;
+  position: relative;
+  left: 50px;
+  top: 50px;
+  width: 150px;
+}
+
+
+#old_password_input {
+  position: relative;
+  left: 250px;
+  background-color: white;
+  color: #000;
+}
+
+
+#new_password_input {
+  position: relative;
+  left: 250px;
+  background-color: white;
+  color: #000;
+}
+
+
+#password_change_username_header {
+  font-size: large;
+  position: relative;
+  left: 50px;
+  top: 50px;
+  width: 150px;
+}
+
+
+#change_password_username_input {
+  position: relative;
+  left: 250px;
+  background-color: white;
+  color: #000;
+}
+
+
+#header_input_CP {
+  background-color: white;
+  color: #000;
+  height: 27px; 
+  width: 200px;
+}
+
+
+/* The switch - the box around the slider */
+.switch_CP {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+
+/* Hide default HTML checkbox */
+.switch_CP input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+/* The slider */
+.slider_CP {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+.slider_CP:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+/*
+FIX L8TR
+
+.slider:after {
+  background-color: black;
+}  
+  */
+
+
+  
+
+input:checked + .slider_CP {
+    background-color: white;
+}
+
+input:checked + .slider_CP:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: black;
+}
+
+/* Rounded sliders */
+.slider_CP.round {
+    border-radius: 34px;
+}
+
+.slider_CP.round:before {
+    border-radius: 50%;
+}
+
+
+/* Above is the styling for the change password page on account.html */
+
+
+
+
+/* Below is the styling for the forgotten_password.html page */
+
+#header_submit_button_FG {
+  background-color: rgb(248, 210, 95);
+  color: #000;
+  border: #000 1px solid;
+  border-radius: 5px 5px 5px 5px;
+}
+
+
+#reset_password_title {
+  font-size: x-large;
+  position: relative;
+  left: 180px;
+  top: 20px;
+  text-decoration: underline;
+}
+                       
+
+#password_header_FP {
+  font-size: large;
+  position: relative;
+  left: 50px;
+  top: 40px;
+  width: 150px;
+}
+
+
+#password_confirm_header_FP {
+  font-size: large;
+  position: relative;
+  left: 50px;
+  top: 40px;
+  width: 150px;
+}
+
+
+#old_password_input_FP {
+  position: relative;
+  left: 250px;
+  bottom: 6px;
+  background-color: white;
+  color: #000;
+}
+
+
+#new_password_input_FP {
+  position: relative;
+  left: 250px;
+  background-color: white;
+  color: #000;
+}
+
+
+#password_change_username_header_FP {
+  font-size: large;
+  position: relative;
+  left: 50px;
+  top: 30px;
+  width: 150px;
+}
+
+
+#change_password_username_input_FP {
+  position: relative;
+  left: 250px;
+  bottom: 20px;
+  background-color: white;
+  color: #000;
+}
+
+
+#password_confirm_email_header_FP {
+  position: relative;
+  font-size: large;
+  left: 50px;
+  top:35px;
+  width: 150px;
+}
+
+
+#change_password_email_input_FP {
+  position: relative;
+  left: 250px;
+  bottom: 13px;
+  background-color: white;
+  color: #000;
+}
+
+
+
+#header_form_FG {
+  height: 0px; 
+  z-index: 2; 
+  position: relative; 
+  font-size: small; 
+  top: 10px;
+  left: 900px;
+}
+
+
+#header_input_FP {
+  background-color: white;
+  color: #000;
+  height: 27px; 
+  width: 200px;
+}
+
+
+#change_password_button_FP {
+  position: relative;
+  z-index: 3;
+  width: 90%;
+  left: 25px;
+  top: 30px;
+  background-color: navy;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#change_password_form_FG {
+  position: relative;
+  background-color: rgb(248, 210, 95);
+  z-index: 3;
+  width: 500px;
+  height: 490px;
+  left: 110px;
+  top: 250px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#body_FG {
+  height: 100vh;
+}
+
+
+/* Above is the styling for the forgotten_password.html page */
+
+
+
+
+
+
+
+/* Below is the styling for the login.html page */
+#body_login {
+  height: 100vh;
+} 
+
+
+#login_form_container {
+  position: relative;
+  top: 250px;
+  left: 20px;
+  width: 500px;
+  height: 400px;
+  border-radius: 10px 10px 10px 10px;
+}  
+
+
+#login_form {
+  position: relative;
+  background-color: rgb(248, 210, 95);
+  z-index: 3;
+  width: 500px;
+  height: 510px;
+  right: 11px;
+  border-radius: 10px 10px 10px 10px;
+  padding-bottom: 200px;
+}
+
+
+#sign_in_title_text {
+  font-size: x-large;
+  position: relative;
+  text-decoration: underline;
+  top: 10px;
+}
+
+
+#username_row {
+  position: relative;
+  left: 275px;
+}
+
+
+#username_header {
+  font-size: large;
+  position: relative;
+  right: 230px;
+  top: 35px;
+  width: 150px;
+}
+
+
+#password_row {
+  position: relative;
+  left: 275px;
+}
+
+
+#password_header_login {
+  font-size: large;
+  position: relative;
+  right: 230px;
+  top: 35px;
+  width: 150px;
+}
+
+
+#login_button {
+  position: relative;
+  z-index: 3;
+  width: 90%;
+  height: 40px;
+  left: 25px;
+  top: 25px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: navy;
+  color: white;
+}
+
+
+#register_button_login_page {
+  position: relative;
+  z-index: 3;
+  width: 94%;
+  height: 40px;
+  left: 15px;
+  bottom: 157px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: navy;
+  color: white;
+}
+
+
+#forgot_password_button {
+  position: relative;
+  z-index: 3;
+  width: 94%;
+  left: 15px;
+  bottom:200px;
+  height: 40px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: navy;
+  color: white;
+}
+
+
+#forgotten_password_span {
+  font-size: medium;
+  color: #000;
+  position: relative;
+  bottom: 220px;
+  z-index: 3;
+}
+
+
+#register_button_header_login_page {
+  font-size: x-large;
+  position: relative;
+  z-index: 3;
+  bottom: 160px;
+  text-decoration: underline;
+}
+
+
+#dotted_line_login {
+  border: none;
+  border-top: 3px dotted #000;
+  color: #fff;
+  background-color: rgb(248, 210, 95);
+  height: 1px;
+  width: 93.7%;
+  z-index: 4;
+  bottom: 170px;
+  position: relative;
+  left: 16px;
+}
+
+
+#line1_login {
+  border-top: 1px solid #000; 
+  opacity: 50%;  
+  position: relative; 
+  top: 23px;
+}
+
+
+#line2_login {
+border-top: 1px solid #000; 
+opacity: 50%; 
+top: 20px; 
+position: relative;
+}
+
+
+#header_input_login {
+  background-color: white;
+  color: #000;
+  height: 27px; 
+  width: 200px;
+}
+
+
+/* Above is the styling for the login.html page */
+
+
+
+
+
+
+/* Below is the styling for the register.html page */ 
+#register_form {
+  position: relative;
+  background-color: rgb(248, 210, 95);
+  z-index: 3;
+  width: 500px;
+  height: 400px;
+  left: 120px;
+  top: 250px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 5px 10px black;
+}
+
+
+#username_header_r {
+  font-size: large;
+  position: relative;
+  right: 220px;
+  top: 40px;
+  width: 150px;
+}
+
+
+#email_header_r {
+  font-size: large;
+  position: relative;
+  right: 220px;
+  top: 40px;
+  width: 150px;
+}
+
+
+#password_header_r {
+  font-size: large;
+  position: relative;
+  right: 220px;
+  top: 40px;
+  width: 150px;
+}
+
+
+#password_confirm_header_r {
+  font-size: large;
+  position: relative;
+  right: 220px;
+  top: 50px;
+  width: 150px;
+}
+
+
+#register_button_r {
+  position: relative;
+  z-index: 3;
+  width: 90%;
+  left: 25px;
+  top: 10px;
+  background-color: navy;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#register_title_r {
+  font-size: large;
+  position: relative;
+  left: 120px;
+  top: 20px;
+  text-decoration: underline;
+}
+
+
+#username_row_r {
+  position: relative;
+  left: 260px;
+}
+
+
+#password_row_r {
+  position: relative;
+  left: 260px;
+}
+
+
+#email_row_r {
+  position: relative;
+  left: 260px;
+}
+
+
+#password_confirm_row_r {
+  position: relative;
+  left: 260px;
+  top: -20px;
+}
+
+      
+#line1_r {
+  border-top: 1px solid #000; 
+  opacity: 50%;  
+  position: relative; 
+  top: 23px;
+}
+
+
+#line2_r {
+  border-top: 1px solid #000; 
+  opacity: 50%; 
+  top: 20px; 
+  position: relative;
+}
+
+
+
+/* Above is the styling for the register.html page */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

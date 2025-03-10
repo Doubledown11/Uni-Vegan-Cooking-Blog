@@ -6,34 +6,34 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('JavaScript for modal has opened')
 
     // Get Modal 
-    let modal_ = document.getElementById('logout_modal');
+    let _modal = document.getElementById('logout_modal_account');
 
 
     // Get button
-    let sign_out_button = document.getElementById('header_button_modal');
+    let sign_out_button = document.getElementById('header_button_modal_account');
 
 
     // When button is clicked, modal opens 
     sign_out_button.addEventListener('click', function () {
         //modal_.classList.toggle('logout_modal_open');
-        modal_.style.display = 'block';
+        _modal.style.display = 'block';
     });
 
 
 
     // Get the span which closes the modal 
-    let close_modal = document.getElementById('close_modal');
+    let close_modal = document.getElementById('close_signout_modal_account');
 
 
     // When span clicked, modal closes
     close_modal.addEventListener('click', function () {
-        modal_.style.display = 'none';
+        _modal.style.display = 'none';
     });
 
     // Users clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal_) {
-            modal_.style.display = 'none';
+        if (event.target == _modal) {
+            _modal.style.display = 'none';
         }; 
     };
 });

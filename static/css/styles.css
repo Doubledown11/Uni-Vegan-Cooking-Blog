@@ -26,6 +26,9 @@ body {
 }
 
 
+#Post_Url {
+  color: rgb(248, 210, 95);
+}
 
 #Title_Text {
   height: 70px; 

@@ -65,7 +65,8 @@ class LoginForm(AuthenticationForm):
         model = User
         fields = ['username', 'password']
         labels = {'username' : 'Enter Username', 'password' : 'Enter Password'}
-        
+         
+
 
 class UploadPhotoForm(forms.ModelForm):
     """

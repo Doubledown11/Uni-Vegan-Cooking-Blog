@@ -1,0 +1,57 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        {% load static %}
+
+     
+
+        <style>
+          
+        </style>
+    </head>
+
+
+
+    <body id="body">
+        <form method="post" id="register_form">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div id="form_errors">
+                        {% for key, value in form.errors.items %}
+                            <strong>{{ value }}</strong>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+
+            
+            {{ register_form }}
+
+            <!-- <h3 id="register_title">New User? Register an account:</h3>
+            <input type="text" placeholder="Username" name="username">
+            <input type="text" placeholder="Email" name="email">
+            <input type="text" placeholder="Password" name="password">
+             -->
+            <button type='submit' class="btn btn-secondary" id="register_button">Register</a>
+            
+            <!-- {% if error %}
+                <p style="color: red;">{{ error }}</p>  
+            {% endif %} -->
+        </form>
+            
+    </body>
+
+
+
+    <footer>  
+        
+    </footer>
+</html>
