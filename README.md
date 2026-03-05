@@ -16,7 +16,7 @@ JavaScript was used to:
 Also plan to use CSS media queries to ensure the site is responsive to various heights and widths.
 
 
-Big Problems: (Hacked.)
+Big Problems: 
 Cannot find a working solution to style my Django forms. Unable to add styling to input fields created with Django tags.
 	Cant style input fields on login or register. 
 
